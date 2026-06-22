@@ -1,0 +1,26 @@
+{
+  "1": {
+    "name": "Marco Beta",
+    "price": 1,
+    "img": "frames/1.png",
+    "shop": false
+  },
+  "6": {
+    "name": "Amor",
+    "price": 75,
+    "img": "frames/6.png",
+    "shop": true
+  },
+  "7": {
+    "name": "Tengaged",
+    "price": 75,
+    "img": "frames/7.png",
+    "shop": true
+  },
+  "8": {
+    "name": "RanchoVisión",
+    "price": 75,
+    "img": "frames/8.png",
+    "shop": false
+  }
+}
