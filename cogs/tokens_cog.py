@@ -46,12 +46,12 @@ class TokensCog(commands.Cog):
             return
 
         if len(matches) == 1:
-            collection, name = matches[0]
+            name, collection = matches[0]
         else:
             result = await choose_match_by_number(self.bot, ctx, matches, title="Lookup — ¿cuál querés ver?")
             if result is None:
                 return
-            collection, name = result
+            name, collection = result
 
         tokens_db   = load_tokens_db()
         token_imgs  = token_variants_for(cards_db, tokens_db, collection=collection, name=name)

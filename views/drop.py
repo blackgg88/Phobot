@@ -88,6 +88,8 @@ class DropView(discord.ui.View):
             inst = create_card_instance_from_meta(card.get("collection"), card.get("name"), cards_db, users)
             users[uid].setdefault("cards", []).append(inst)
             users[uid]["last_drop_take"] = now
+            from core.missions import progress as mission_progress
+            claim_completed = mission_progress(users, uid, "claims", 1)
             save_users(users)
 
             self.claimed[card_idx]       = interaction.user.id
@@ -100,6 +102,19 @@ class DropView(discord.ui.View):
                     child.label    = f"✅  {card.get('name', '')}"[:80]
                     child.style    = discord.ButtonStyle.success
                     break
+
+        # notificar misiones completadas por el claim
+        for label, reward in claim_completed:
+            users_path2, _, _ = get_paths()
+            users2 = load_json(users_path2, {})
+            users2[uid]["gold"] = int(users2[uid].get("gold", 0)) + reward
+            save_users(users2)
+            try:
+                await interaction.channel.send(
+                    f"✅ **Misión completada:** {label} — **+{reward}** oro 💰"
+                )
+            except Exception:
+                pass
 
         rarity_label = rarity_es(inst.get("rarity", "common"))
         reply_text = (

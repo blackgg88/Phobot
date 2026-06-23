@@ -23,6 +23,7 @@ COGS = [
     "cogs.admin_cog",
     "cogs.achievements_cog",
     "cogs.profile_cog",
+    "cogs.missions_cog",
 ]
 
 

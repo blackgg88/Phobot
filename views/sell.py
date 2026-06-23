@@ -61,7 +61,18 @@ class SellConfirmView(discord.ui.View):
         cards.remove(inst)
         users[uid]["cards"] = cards
         users[uid]["gold"]  = int(users[uid].get("gold", 0)) + gain
+        from core.missions import progress as mission_progress
+        sell_completed = mission_progress(users, uid, "sells", 1)
         save_users(users)
+        for label, reward in sell_completed:
+            users[uid]["gold"] = int(users[uid].get("gold", 0)) + reward
+            save_users(users)
+            try:
+                await interaction.channel.send(
+                    f"✅ **Misión completada:** {label} — **+{reward}** oro 💰"
+                )
+            except Exception:
+                pass
 
         e = discord.Embed(
             title="Venta confirmada",

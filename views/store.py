@@ -10,6 +10,7 @@ from core.cards import (
 )
 from core.events import load_shop_collections
 from core.frames import load_frames_catalog
+from core.museum_bgs import load_museum_bg_catalog, get_user_owned_bgs, give_user_bg
 from core.storage import get_paths, load_json
 from core.users import ensure_user, save_users
 from rendering.cards import pil_to_discord_file, render_single_card_image
@@ -42,7 +43,8 @@ class StoreView(discord.ui.View):
             description=(
                 f"💰 Oro: **{gold}**\n\n"
                 f"🃏 **Carta aleatoria** — **{BUY_ONE_COST}** oro *(de la tienda activa)*\n"
-                "🖼️ **Marcos** — Cosméticos para tus cartas\n\n"
+                "🖼️ **Marcos** — Cosméticos para tus cartas\n"
+                "🏛️ **Fondos de museo** — Cambiá el fondo de tu museo\n\n"
                 "Elegí qué querés comprar:"
             ),
             color=0xe67e22,
@@ -87,6 +89,23 @@ class StoreView(discord.ui.View):
         gold = int(users[str(self.user_id)].get("gold", 0))
         view = FramesShopView(user_id=self.user_id, catalog=catalog, gold=gold)
         await interaction.followup.send(embed=view.make_embed(), view=view, ephemeral=False)
+
+    @discord.ui.button(label="🏛️ Fondos de museo", style=discord.ButtonStyle.secondary)
+    async def museum_bgs_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await ack(interaction)
+        catalog = load_museum_bg_catalog()
+        shop_catalog = {k: v for k, v in catalog.items() if v.get("shop")}
+        if not shop_catalog:
+            await interaction.followup.send("No hay fondos de museo en la tienda aún.", ephemeral=True)
+            return
+        users_path, _, _ = get_paths()
+        users = load_json(users_path, {})
+        uid   = str(self.user_id)
+        ensure_user(users, uid)
+        gold  = int(users[uid].get("gold", 0))
+        owned = get_user_owned_bgs(users, uid)
+        view  = MuseumBgShopView(user_id=self.user_id, catalog=shop_catalog, gold=gold, owned=owned)
+        await interaction.followup.send(embed=view.make_embed(), view=view)
 
     @discord.ui.button(label="⏹️", style=discord.ButtonStyle.danger)
     async def close_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -304,7 +323,120 @@ class FramesShopView(discord.ui.View):
         self.stop()
 
     @discord.ui.button(label="❌ Cancelar", style=discord.ButtonStyle.danger)
-    async def cancel_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
+    async def cancel_btn_frames(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await ack(interaction)
+        for child in self.children:
+            child.disabled = True
+        await edit_interaction_message(interaction, embed=discord.Embed(title="Compra cancelada", color=0x95a5a6), view=self)
+        self.stop()
+
+
+# ─── MuseumBgShop ─────────────────────────────────────────────────────────────
+
+class MuseumBgBuySelect(discord.ui.Select):
+    def __init__(self, *, user_id: int, catalog: dict, owned: list):
+        self._owned_strs = [str(o) for o in owned]
+        options = []
+        for bg_id, meta in catalog.items():
+            already = str(bg_id) in self._owned_strs
+            label   = f"{'✅ ' if already else ''}{meta['name']} — {meta['price']} oro"
+            options.append(discord.SelectOption(label=label[:100], value=str(bg_id)))
+        super().__init__(placeholder="Elegí un fondo…", options=options[:25])
+        self.user_id = user_id
+        self.catalog = catalog
+
+    async def callback(self, interaction: discord.Interaction) -> None:
+        self.view.selected_bg_id = self.values[0]
+        await self.view.show_selected(interaction)
+
+
+class MuseumBgShopView(discord.ui.View):
+    def __init__(self, *, user_id: int, catalog: dict, gold: int, owned: list):
+        super().__init__(timeout=120)
+        self.user_id        = user_id
+        self.catalog        = catalog
+        self.gold           = gold
+        self.owned          = owned
+        self.selected_bg_id: Optional[str] = None
+        self.add_item(MuseumBgBuySelect(user_id=user_id, catalog=catalog, owned=owned))
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("Eso no es tuyo 😅", ephemeral=True)
+            return False
+        return True
+
+    def make_embed(self) -> discord.Embed:
+        owned_strs = [str(o) for o in self.owned]
+        lines = []
+        for bg_id, meta in self.catalog.items():
+            tick = "✅" if str(bg_id) in owned_strs else "⬜"
+            lines.append(f"{tick} **{meta['name']}** — {meta['price']} oro")
+        return discord.Embed(
+            title="🏛️ Fondos de museo",
+            description=f"💰 Oro: **{self.gold}**\n\n" + "\n".join(lines),
+            color=0x2c3e50,
+        )
+
+    async def show_selected(self, interaction: discord.Interaction) -> None:
+        await ack(interaction)
+        bid  = self.selected_bg_id
+        meta = self.catalog.get(bid) if bid else None
+        if not meta:
+            return
+        already = str(bid) in [str(o) for o in self.owned]
+        desc = (
+            f"**{meta['name']}**\nPrecio: **{meta['price']}** oro\n💰 Oro tuyo: **{self.gold}**\n\n"
+            + ("✅ Ya tenés este fondo." if already else "¿Querés comprarlo?")
+        )
+        await edit_interaction_message(interaction,
+            embed=discord.Embed(title="🏛️ Fondo seleccionado", description=desc, color=0x2c3e50),
+            view=self)
+
+    @discord.ui.button(label="✅ Comprar fondo", style=discord.ButtonStyle.success)
+    async def buy_bg_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await ack(interaction)
+        bid  = self.selected_bg_id
+        meta = self.catalog.get(bid) if bid else None
+        if not meta:
+            await interaction.followup.send("Elegí un fondo primero.", ephemeral=True)
+            return
+
+        users_path, _, _ = get_paths()
+        users = load_json(users_path, {})
+        uid   = str(self.user_id)
+        ensure_user(users, uid)
+
+        if str(bid) in [str(o) for o in get_user_owned_bgs(users, uid)]:
+            await interaction.followup.send("Ya tenés ese fondo.", ephemeral=True)
+            return
+
+        gold  = int(users[uid].get("gold", 0))
+        price = int(meta.get("price", 0))
+        if gold < price:
+            await interaction.followup.send("No tenés oro suficiente 💸", ephemeral=True)
+            return
+
+        users[uid]["gold"] = gold - price
+        give_user_bg(users, uid, str(bid))
+        save_users(users)
+
+        e = discord.Embed(
+            title="✅ Fondo comprado",
+            description=(
+                f"Compraste el fondo **{meta['name']}**.\n"
+                f"Oro restante: **{users[uid]['gold']}**\n\n"
+                f"Usá `!pmset custom:{bid}` para activarlo en tu museo."
+            ),
+            color=0x2ecc71,
+        )
+        for child in self.children:
+            child.disabled = True
+        await edit_interaction_message(interaction, embed=e, view=self)
+        self.stop()
+
+    @discord.ui.button(label="❌ Cancelar", style=discord.ButtonStyle.danger)
+    async def cancel_bg_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
         await ack(interaction)
         for child in self.children:
             child.disabled = True

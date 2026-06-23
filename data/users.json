@@ -3247,19 +3247,84 @@
                 "frame_id": null,
                 "token_code": null,
                 "token_img": null
+            },
+            {
+                "collection": "Ed, Edd y Eddy",
+                "name": "Jonny",
+                "code": "6jr3f2",
+                "value": 2796,
+                "rarity": "common",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "Pokémon G2",
+                "name": "Mantine",
+                "code": "d90rqg",
+                "value": 1199,
+                "rarity": "rare",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "American Horror Story",
+                "name": "Lavinia Richter",
+                "code": "v3unp2",
+                "value": 1494,
+                "rarity": "rare",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "Memes",
+                "name": "Stonks",
+                "code": "6xyc7v",
+                "value": 1616,
+                "rarity": "epic",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "League of Legends",
+                "name": "Elise",
+                "code": "iqmsu5",
+                "value": 2641,
+                "rarity": "common",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "Pokémon G1",
+                "name": "Poliwrath",
+                "code": "h461z5",
+                "value": 2372,
+                "rarity": "rare",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
             }
         ],
         "last_pull": 1782101383.2524943,
-        "last_drop": 1782160809.9889107,
-        "last_drop_take": 1782113124.2073457,
-        "gold": 0,
-        "last_daily": 0,
+        "last_drop": 1782254309.248309,
+        "last_drop_take": 1782212783.7663105,
+        "gold": 1030,
+        "last_daily": 1782181987.4097378,
         "last_work": 0,
-        "wishlist": [],
-        "museum": [
-            "o6k3xb"
+        "wishlist": [
+            "Lux • League of Legends"
         ],
-        "frames": [],
+        "museum": [
+            "o6k3xb",
+            "7ilux8"
+        ],
+        "frames": [
+            6
+        ],
         "tokens": [],
         "packs": {
             "common": 0,
@@ -3269,8 +3334,53 @@
             "mythic": 0
         },
         "cat_game": {},
-        "museum_bg": "pastel_rosa",
-        "last_gacha": 1782160829.498607
+        "museum_bg": "custom:1",
+        "last_gacha": 1782212718.8921587,
+        "guilds": {
+            "1518799373373276160": {
+                "msg_count": 86,
+                "last_msg_date": "2026-06-23",
+                "streak": 1,
+                "reactions_received": 0,
+                "voice_seconds": 16,
+                "voice_week": {
+                    "2026-W26": 16
+                },
+                "screen_shared": true,
+                "max_voice_with": 1,
+                "achievements": [
+                    "voice_first",
+                    "screen_share"
+                ],
+                "profile": {
+                    "birthday": "07/06",
+                    "age": "26",
+                    "featured_titles": [
+                        "voice_first"
+                    ],
+                    "featured_cards": [
+                        "o6k3xb",
+                        "e7j222",
+                        "d4x8aw"
+                    ],
+                    "theme": "lila"
+                }
+            }
+        },
+        "museum_bgs_owned": [
+            "1"
+        ],
+        "missions": {
+            "date": "2026-06-23",
+            "msg": 12,
+            "voice_seconds": 0,
+            "drops": 1,
+            "claims": 0,
+            "sells": 0,
+            "rewarded": [
+                "msg_5"
+            ]
+        }
     },
     "599714384301785099": {
         "cards": [
@@ -4198,6 +4308,48 @@
         "last_pull": 1782101665.2917569,
         "last_drop": 1782107271.1100507,
         "last_drop_take": 1782107281.3501024,
+        "gold": 0,
+        "last_daily": 0,
+        "last_work": 0,
+        "wishlist": [],
+        "museum": [],
+        "frames": [],
+        "tokens": [],
+        "packs": {
+            "common": 0,
+            "rare": 0,
+            "epic": 0,
+            "legendary": 0,
+            "mythic": 0
+        },
+        "cat_game": {}
+    },
+    "311577422317486091": {
+        "cards": [
+            {
+                "collection": "Re:Zero",
+                "name": "Crusch",
+                "code": "fztcov",
+                "value": 1953,
+                "rarity": "rare",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "Life Is Strange",
+                "name": "Kate Marsh",
+                "code": "5k24bn",
+                "value": 273,
+                "rarity": "epic",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            }
+        ],
+        "last_pull": 0,
+        "last_drop": 1782181879.5362806,
+        "last_drop_take": 1782181883.986197,
         "gold": 0,
         "last_daily": 0,
         "last_work": 0,

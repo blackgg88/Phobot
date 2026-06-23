@@ -12,8 +12,8 @@ class BuyCog(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    @commands.command(name="pbuy")
-    async def pbuy_cmd(self, ctx: commands.Context) -> None:
+    @commands.command(name="ptienda")
+    async def ptienda_cmd(self, ctx: commands.Context) -> None:
         view  = StoreView(user_id=ctx.author.id)
         embed = view.make_embed()
         await ctx.reply(embed=embed, view=view)

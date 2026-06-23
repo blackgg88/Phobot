@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import os
 from typing import List, Optional
 
 from PIL import Image, ImageDraw
 
-from config import DEFAULT_MUSEUM_BG, MUSEUM_BACKGROUNDS
+from config import BASE_DIR, DEFAULT_MUSEUM_BG, MUSEUM_BACKGROUNDS
 from rendering.cards import render_single_card_image, resize_to_fit_rgba
 from rendering.fonts import get_bold_font, draw_centered_text_with_outline
 
@@ -20,12 +21,25 @@ def build_museum_image(
     top_pad = 20
 
     bg_key = (bg_key or DEFAULT_MUSEUM_BG).strip().lower()
-    bg = MUSEUM_BACKGROUNDS.get(bg_key, MUSEUM_BACKGROUNDS[DEFAULT_MUSEUM_BG])
 
     width  = cols * card_w + (cols + 1) * pad
     height = rows * card_h + (rows + 1) * pad + top_pad
 
-    canvas = Image.new("RGBA", (width, height), bg)
+    # fondo: imagen comprada ("custom:ID") o color sólido
+    if bg_key.startswith("custom:"):
+        bg_id = bg_key[7:]
+        from core.museum_bgs import load_museum_bg_catalog
+        meta = load_museum_bg_catalog().get(bg_id, {})
+        img_rel = meta.get("img", "")
+        full = os.path.join(BASE_DIR, "images", img_rel)
+        try:
+            bg_img = Image.open(full).convert("RGBA").resize((width, height), Image.LANCZOS)
+            canvas = bg_img.copy()
+        except Exception:
+            canvas = Image.new("RGBA", (width, height), (18, 18, 18, 255))
+    else:
+        bg = MUSEUM_BACKGROUNDS.get(bg_key, MUSEUM_BACKGROUNDS[DEFAULT_MUSEUM_BG])
+        canvas = Image.new("RGBA", (width, height), bg)
     draw   = ImageDraw.Draw(canvas)
     font   = get_bold_font(32)
     draw_centered_text_with_outline(draw, "MUSEO", width // 2, 6, font, (255, 255, 255, 255), stroke=2)

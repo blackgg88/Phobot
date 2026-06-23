@@ -33,12 +33,14 @@ def _profile_stats(users: dict, uid: str, gid: str) -> dict:
         "age":             "",
         "featured_titles": [],
         "featured_cards":  [],
+        "theme":           "negro",
     })
     p = stats["profile"]
     p.setdefault("birthday",        "")
     p.setdefault("age",             "")
     p.setdefault("featured_titles", [])
     p.setdefault("featured_cards",  [])
+    p.setdefault("theme",           "negro")
     return stats
 
 
@@ -110,6 +112,7 @@ async def _build_file(
         season_key         = season_key,
         date_str           = date_str,
         time_str           = time_str,
+        theme              = profile.get("theme", "negro"),
     )
     return pil_to_discord_file(img, "perfil.png")
 
@@ -235,6 +238,40 @@ class CardsModal(discord.ui.Modal, title="Cartas destacadas (hasta 3)"):
         await self._view.save_profile(interaction, featured_cards=codes)
 
 
+# ── Tema ───────────────────────────────────────────────────
+
+class ThemeSelect(discord.ui.Select):
+    def __init__(self, profile_view: "ProfileView"):
+        self._pv = profile_view
+        options = [
+            discord.SelectOption(label="Negro",   value="negro",   emoji="⬛", description="Oscuro clásico", default=True),
+            discord.SelectOption(label="Rosa",    value="rosa",    emoji="🌸", description="Tono rosa"),
+            discord.SelectOption(label="Verde",   value="verde",   emoji="🌿", description="Tono verde"),
+            discord.SelectOption(label="Celeste", value="celeste", emoji="🩵", description="Tono celeste"),
+            discord.SelectOption(label="Lila",    value="lila",    emoji="💜", description="Tono lila"),
+            discord.SelectOption(label="Naranja", value="naranja", emoji="🟠", description="Tono naranja"),
+        ]
+        super().__init__(placeholder="Elegí un tema...", options=options, row=0)
+
+    async def callback(self, interaction: discord.Interaction):
+        await self._pv.save_profile(interaction, theme=self.values[0])
+
+
+class ThemeSelectView(discord.ui.View):
+    def __init__(self, profile_view: "ProfileView"):
+        super().__init__(timeout=60)
+        self.add_item(ThemeSelect(profile_view))
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        pv = self.children[0]._pv
+        if interaction.user.id != pv.owner_id:
+            await interaction.response.send_message(
+                "Solo el dueño puede cambiar el tema.", ephemeral=True
+            )
+            return False
+        return True
+
+
 # ── View ───────────────────────────────────────────────────
 
 class ProfileView(discord.ui.View):
@@ -278,7 +315,7 @@ class ProfileView(discord.ui.View):
                 return
 
         f = await _build_file(member, users, cards_db, uid, gid)
-        await interaction.response.edit_message(attachments=[f], view=self)
+        await interaction.response.edit_message(content=None, attachments=[f], view=self)
 
     @discord.ui.button(label="✏ Cumpleaños", style=discord.ButtonStyle.secondary, row=0)
     async def btn_birthday(self, interaction: discord.Interaction, _):
@@ -305,6 +342,13 @@ class ProfileView(discord.ui.View):
         stats    = _profile_stats(users, self.target_uid, self.guild_id)
         current  = stats["profile"].get("featured_cards", [])
         await interaction.response.send_modal(CardsModal(self, current))
+
+    @discord.ui.button(label="🎨 Tema", style=discord.ButtonStyle.secondary, row=1)
+    async def btn_theme(self, interaction: discord.Interaction, _):
+        await interaction.response.edit_message(
+            content="Elegí un tema para tu perfil:",
+            view=ThemeSelectView(self),
+        )
 
     @discord.ui.button(label="Ver mis logros", style=discord.ButtonStyle.secondary, row=1)
     async def btn_achievements(self, interaction: discord.Interaction, _):
