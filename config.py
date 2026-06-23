@@ -89,6 +89,7 @@ OWNER_ID = 1048304294492905576
 def _require_env(name: str) -> str:
     val = os.environ.get(name)
     if not val:
+        print(val)
         raise RuntimeError(
             f"Variable de entorno '{name}' no definida. "
             "Agregala al archivo .env o al entorno del sistema."

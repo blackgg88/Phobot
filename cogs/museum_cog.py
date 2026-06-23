@@ -26,7 +26,7 @@ class MuseumCog(commands.Cog):
 
     @commands.command(name="pmuseo")
     async def pmuseo_cmd(self, ctx: commands.Context, *, member: discord.Member = None) -> None:
-        target  = await pick_target_member(ctx, member) or ctx.author
+        target  = pick_target_member(ctx, member) or ctx.author
         users, cards_db = self._load()
         uid     = str(target.id)
         ensure_user(users, uid)

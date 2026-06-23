@@ -21,6 +21,8 @@ COGS = [
     "cogs.trade_cog",
     "cogs.tokens_cog",
     "cogs.admin_cog",
+    "cogs.achievements_cog",
+    "cogs.profile_cog",
 ]
 
 

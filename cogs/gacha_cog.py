@@ -13,8 +13,8 @@ from core.storage import get_paths, load_json
 from core.tokens import gen_unique_token_code, all_existing_token_codes, load_tokens_db
 from core.users import ensure_user, human_time, save_users
 from rendering.cards import pil_to_discord_file
-from rendering.pack import create_pack_image
-from views.drop import DropView
+from rendering.pack import create_pack_image, create_drop_image
+from views.drop import DropView, RARITY_EMOJI
 
 import random
 
@@ -140,8 +140,7 @@ class GachaCog(commands.Cog):
             await ctx.reply("No hay cartas en el pool.")
             return
 
-        k = random.randint(1, 3)
-        dropped = pick_unique(pool, weights, k=k) or []
+        dropped = pick_unique(pool, weights, k=3) or []
         if not dropped:
             await ctx.reply("No hay cartas disponibles para el drop.")
             return
@@ -149,17 +148,34 @@ class GachaCog(commands.Cog):
         users[uid]["last_drop"] = now
         save_users(users)
 
-        pack_data = [{"collection": m["collection"], "name": m["name"], "img": m["img"],
-                      "rarity": m["rarity"]} for m in dropped]
-        img  = create_pack_image(pack_data)
+        pack_data = []
+        for idx, m in enumerate(dropped):
+            display_val = random.randint(1, 9999)
+            pack_data.append({
+                "collection":   m["collection"],
+                "name":         m["name"],
+                "img":          m["img"],
+                "rarity":       m["rarity"],
+                "display_code": f"G·{display_val}",
+            })
+
+        img  = create_drop_image(pack_data)
         f    = pil_to_discord_file(img, "drop.png")
         view = DropView(drop_user_id=ctx.author.id, cards=pack_data, drop_time=now)
 
+        lines = []
+        for i, c in enumerate(pack_data, 1):
+            emoji = RARITY_EMOJI.get(c["rarity"], "▪")
+            lines.append(
+                f"{i}. {emoji} | {c['display_code']} | {c['name']} • {c['collection']}"
+            )
+
         e = discord.Embed(
-            title=f"💫 Drop de {ctx.author.display_name}",
-            description="Agarrá tu carta antes que otros 👇",
+            description="\n".join(lines),
             color=0xe74c3c,
-        ).set_image(url="attachment://drop.png")
+        )
+        e.set_author(name=f"{ctx.author.display_name} está dropeando cartas")
+        e.set_image(url="attachment://drop.png")
         await ctx.send(embed=e, file=f, view=view)
         await notify_wishlist(self.bot, ctx.channel, pack_data, users)
 

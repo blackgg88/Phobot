@@ -29,7 +29,7 @@ class CollectionCog(commands.Cog):
 
     @commands.command(name="palbums")
     async def palbums_cmd(self, ctx: commands.Context, *, member: discord.Member = None) -> None:
-        target = await pick_target_member(ctx, member)
+        target = pick_target_member(ctx, member)
         target = target or ctx.author
         users, cards_db = self._load()
         uid = str(target.id)

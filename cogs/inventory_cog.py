@@ -15,7 +15,7 @@ class InventoryCog(commands.Cog):
 
     @commands.command(name="pinv")
     async def pinv_cmd(self, ctx: commands.Context, *, member: discord.Member = None) -> None:
-        target  = await pick_target_member(ctx, member) or ctx.author
+        target  = pick_target_member(ctx, member) or ctx.author
         uid     = str(target.id)
 
         users_path, cards_path, _ = get_paths()

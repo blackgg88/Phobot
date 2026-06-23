@@ -68,7 +68,7 @@ class EconomyCog(commands.Cog):
         users, cards_db = self._load()
         uid = str(ctx.author.id)
 
-        target = await pick_target_member(ctx, None)
+        target = pick_target_member(ctx, None)
         target_uid = str(target.id) if target else uid
         ensure_user(users, target_uid)
 
