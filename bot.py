@@ -7,6 +7,7 @@ import discord
 from discord.ext import commands
 
 from config import BOT_TOKEN
+from core.bot_channel import BOT_CHANNEL_NAME
 
 COGS = [
     "cogs.help_cog",
@@ -39,6 +40,15 @@ async def main() -> None:
         case_insensitive=True,
     )
 
+    @bot.check
+    async def only_bot_channel(ctx: commands.Context) -> bool:
+        """Solo procesa comandos desde el canal del bot. En DMs siempre pasa."""
+        if ctx.guild is None:
+            return True
+        if ctx.channel.name == BOT_CHANNEL_NAME:
+            return True
+        raise commands.CheckFailure("wrong_channel")
+
     @bot.event
     async def on_ready() -> None:
         print(f"[READY] Bot listo: {bot.user} ({bot.user.id})")
@@ -55,6 +65,9 @@ async def main() -> None:
             await ctx.reply(f"Comando no encontrado: `{ctx.invoked_with}`")
             return
         if isinstance(error, commands.CheckFailure):
+            # Si es por canal equivocado, ignorar silenciosamente
+            if str(error) == "wrong_channel":
+                return
             try:
                 await ctx.reply("No tenés permisos para ese comando.")
             except Exception:

@@ -103,8 +103,10 @@ class SingleDropView(discord.ui.View):
             users2[uid]["gold"] = int(users2[uid].get("gold", 0)) + reward
             save_users(users2)
             try:
-                await interaction.channel.send(
-                    f"✅ **Misión completada:** {label} — **+{reward}** oro 💰"
+                from core.bot_channel import get_bot_channel
+                ch = (get_bot_channel(interaction.guild) if interaction.guild else None) or interaction.channel
+                await ch.send(
+                    f"✅ {interaction.user.mention} completó la misión **{label}** — **+{reward}** oro 💰"
                 )
             except Exception:
                 pass
@@ -216,8 +218,10 @@ class MultiDropView(discord.ui.View):
             users2[uid]["gold"] = int(users2[uid].get("gold", 0)) + reward
             save_users(users2)
             try:
-                await interaction.channel.send(
-                    f"✅ **Misión completada:** {label} — **+{reward}** oro 💰"
+                from core.bot_channel import get_bot_channel
+                ch = (get_bot_channel(interaction.guild) if interaction.guild else None) or interaction.channel
+                await ch.send(
+                    f"✅ {interaction.user.mention} completó la misión **{label}** — **+{reward}** oro 💰"
                 )
             except Exception:
                 pass
@@ -330,8 +334,10 @@ class DropView(discord.ui.View):
             users2[uid]["gold"] = int(users2[uid].get("gold", 0)) + reward
             save_users(users2)
             try:
-                await interaction.channel.send(
-                    f"✅ **Misión completada:** {label} — **+{reward}** oro 💰"
+                from core.bot_channel import get_bot_channel
+                ch = (get_bot_channel(interaction.guild) if interaction.guild else None) or interaction.channel
+                await ch.send(
+                    f"✅ {interaction.user.mention} completó la misión **{label}** — **+{reward}** oro 💰"
                 )
             except Exception:
                 pass

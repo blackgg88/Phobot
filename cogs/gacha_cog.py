@@ -147,12 +147,14 @@ class GachaCog(commands.Cog):
 
         users[uid]["last_drop"] = now
         from core.missions import progress as mission_progress
+        from core.bot_channel import get_bot_channel
         newly_missions = mission_progress(users, uid, "drops", 1)
         save_users(users)
         for label, reward in newly_missions:
             users[uid]["gold"] = int(users[uid].get("gold", 0)) + reward
             save_users(users)
-            await ctx.send(f"✅ **Misión completada:** {label} — **+{reward}** oro 💰")
+            ch = get_bot_channel(ctx.guild) or ctx.channel
+            await ch.send(f"✅ {ctx.author.mention} completó la misión **{label}** — **+{reward}** oro 💰")
 
         pack_data = []
         for idx, m in enumerate(dropped):

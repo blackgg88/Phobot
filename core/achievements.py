@@ -122,30 +122,66 @@ ACH_BY_ID: Dict[str, Dict] = {a["id"]: a for a in ACHIEVEMENTS}
 CATEGORIES: List[str] = list(dict.fromkeys(a["cat"] for a in ACHIEVEMENTS))
 
 
-# ── Stats por servidor ──────────────────────────────────────
+# ── Stats globales (no por servidor) ───────────────────────
 
+def ensure_user_stats(users: dict, uid: str) -> dict:
+    """
+    Inicializa y devuelve las stats GLOBALES del usuario.
+    Si había datos en guilds los migra y los une.
+    """
+    user = users[uid]
+
+    # Inicializar claves globales si no existen
+    user.setdefault("achievements",       [])
+    user.setdefault("msg_count",          0)
+    user.setdefault("last_msg_date",      "")
+    user.setdefault("streak",             0)
+    user.setdefault("reactions_received", 0)
+    user.setdefault("voice_seconds",      0)
+    user.setdefault("voice_week",         {})
+    user.setdefault("screen_shared",      False)
+    user.setdefault("max_voice_with",     0)
+
+    # Migración única desde estructura por servidor (si existe)
+    if user.get("guilds") and not user.get("_ach_migrated"):
+        for gid, gdata in user["guilds"].items():
+            if not isinstance(gdata, dict):
+                continue
+            # Unir logros
+            for aid in gdata.get("achievements", []):
+                if aid not in user["achievements"]:
+                    user["achievements"].append(aid)
+            # Acumular stats (tomar máximos/sumas)
+            user["msg_count"]          = max(user["msg_count"],          gdata.get("msg_count", 0))
+            user["streak"]             = max(user["streak"],             gdata.get("streak", 0))
+            user["reactions_received"] = max(user["reactions_received"], gdata.get("reactions_received", 0))
+            user["voice_seconds"]     += gdata.get("voice_seconds", 0)
+            user["max_voice_with"]     = max(user["max_voice_with"],     gdata.get("max_voice_with", 0))
+            if gdata.get("screen_shared"):
+                user["screen_shared"] = True
+            for wk, secs in gdata.get("voice_week", {}).items():
+                user["voice_week"][wk] = user["voice_week"].get(wk, 0) + secs
+            # Tomar la fecha de último mensaje más reciente
+            gd = gdata.get("last_msg_date", "")
+            if gd > user.get("last_msg_date", ""):
+                user["last_msg_date"] = gd
+        user["_ach_migrated"] = True
+
+    return user
+
+
+# Alias para compatibilidad con código que todavía llame a ensure_guild_stats
 def ensure_guild_stats(users: dict, uid: str, guild_id: str) -> dict:
-    """Inicializa y devuelve el dict de stats del usuario en un servidor."""
-    user   = users[uid]
-    guilds = user.setdefault("guilds", {})
-    stats  = guilds.setdefault(guild_id, {})
-
-    stats.setdefault("msg_count",          0)
-    stats.setdefault("last_msg_date",      "")
-    stats.setdefault("streak",             0)
-    stats.setdefault("reactions_received", 0)
-    stats.setdefault("voice_seconds",      0)
-    stats.setdefault("voice_week",         {})   # week_key → seconds
-    stats.setdefault("screen_shared",      False)
-    stats.setdefault("max_voice_with",     0)
-    stats.setdefault("achievements",       [])
-    return stats
+    return ensure_user_stats(users, uid)
 
 
 # ── Chequeo de logros ───────────────────────────────────────
 
 def check_and_award(stats: dict) -> List[str]:
-    """Devuelve lista de IDs de logros recién desbloqueados."""
+    """
+    Recibe el dict del usuario (stats globales).
+    Devuelve lista de IDs de logros recién desbloqueados.
+    """
     unlocked = stats["achievements"]
     newly    = []
 
@@ -168,15 +204,15 @@ def check_and_award(stats: dict) -> List[str]:
     if sk  >= 30:        award("streak_30")
     if rxn >= 100:       award("reactions_100")
 
-    if vs > 0:                        award("voice_first")
-    if vs >= 3_600:                   award("voice_1h")
-    if vs >= 36_000:                  award("voice_10h")
-    if vs >= 180_000:                 award("voice_50h")
-    if vs >= 360_000:                 award("voice_100h")
-    if vs >= 1_800_000:               award("voice_500h")
-    if vs >= 3_600_000:               award("voice_1000h")
-    if stats.get("screen_shared"):    award("screen_share")
+    if vs > 0:                               award("voice_first")
+    if vs >= 3_600:                          award("voice_1h")
+    if vs >= 36_000:                         award("voice_10h")
+    if vs >= 180_000:                        award("voice_50h")
+    if vs >= 360_000:                        award("voice_100h")
+    if vs >= 1_800_000:                      award("voice_500h")
+    if vs >= 3_600_000:                      award("voice_1000h")
+    if stats.get("screen_shared"):           award("screen_share")
     if stats.get("max_voice_with", 0) >= 5:  award("voice_5people")
-    if max_week_s >= 86_400:          award("voice_week_24h")
+    if max_week_s >= 86_400:                 award("voice_week_24h")
 
     return newly

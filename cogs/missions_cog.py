@@ -5,16 +5,21 @@ import time
 import discord
 from discord.ext import commands
 
+from core.bot_channel import get_bot_channel
 from core.missions import MISSIONS, ensure_missions, format_reset_countdown, progress
 from core.storage import get_paths, load_json
 from core.users import ensure_user, save_users
 
 
-async def _notify_completed(ctx_or_channel, label: str, reward: int) -> None:
-    """Manda mensaje público cuando se completa una misión."""
+async def _notify_completed(guild: discord.Guild, member: discord.Member, label: str, reward: int) -> None:
+    channel = get_bot_channel(guild)
+    if channel is None:
+        channel = guild.system_channel
+    if channel is None:
+        return
     try:
-        await ctx_or_channel.send(
-            f"✅ **Misión completada:** {label} — **+{reward}** oro 💰"
+        await channel.send(
+            f"✅ {member.mention} completó la misión **{label}** — **+{reward}** oro 💰"
         )
     except Exception:
         pass
@@ -82,7 +87,7 @@ class MissionsCog(commands.Cog):
         for label, reward in newly:
             users[uid]["gold"] = int(users[uid].get("gold", 0)) + reward
             save_users(users)
-            await _notify_completed(message.channel, label, reward)
+            await _notify_completed(message.guild, message.author, label, reward)
 
     # ── Voz ──────────────────────────────────────────────────────────────────
 
@@ -114,16 +119,11 @@ class MissionsCog(commands.Cog):
             newly = progress(users, uid, "voice_seconds", elapsed)
             save_users(users)
 
-            if newly and before.channel:
+            if newly:
                 for label, reward in newly:
                     users[uid]["gold"] = int(users[uid].get("gold", 0)) + reward
                     save_users(users)
-                    try:
-                        await before.channel.guild.system_channel.send(
-                            f"✅ **{member.display_name}** completó la misión: {label} — **+{reward}** oro 💰"
-                        )
-                    except Exception:
-                        pass
+                    await _notify_completed(member.guild, member, label, reward)
 
 
 async def setup(bot: commands.Bot) -> None:
