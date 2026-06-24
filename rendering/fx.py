@@ -31,7 +31,7 @@ def apply_rarity_fx(card_rgba: Image.Image, color_rgba: Tuple) -> Image.Image:
     draw = ImageDraw.Draw(out)
     border_w = 6
     for i in range(border_w):
-        draw.rectangle([i, i, w - 1 - i, h - 1 - i], outline=(r, g, b, 255))
+        draw.rounded_rectangle([i, i, w - 1 - i, h - 1 - i], radius=max(1, 18 - i), outline=(r, g, b, 255))
     return out
 
 

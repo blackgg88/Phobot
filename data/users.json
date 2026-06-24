@@ -3307,12 +3307,22 @@
                 "frame_id": null,
                 "token_code": null,
                 "token_img": null
+            },
+            {
+                "collection": "Frieren",
+                "name": "Serie",
+                "code": "8jxrtn",
+                "value": 805,
+                "rarity": "rare",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
             }
         ],
         "last_pull": 1782101383.2524943,
-        "last_drop": 1782254309.248309,
-        "last_drop_take": 1782212783.7663105,
-        "gold": 1030,
+        "last_drop": 1782262748.596764,
+        "last_drop_take": 1782262053.8869002,
+        "gold": 1040,
         "last_daily": 1782181987.4097378,
         "last_work": 0,
         "wishlist": [
@@ -3338,7 +3348,7 @@
         "last_gacha": 1782212718.8921587,
         "guilds": {
             "1518799373373276160": {
-                "msg_count": 86,
+                "msg_count": 113,
                 "last_msg_date": "2026-06-23",
                 "streak": 1,
                 "reactions_received": 0,
@@ -3350,7 +3360,8 @@
                 "max_voice_with": 1,
                 "achievements": [
                     "voice_first",
-                    "screen_share"
+                    "screen_share",
+                    "msg_100"
                 ],
                 "profile": {
                     "birthday": "07/06",
@@ -3372,13 +3383,14 @@
         ],
         "missions": {
             "date": "2026-06-23",
-            "msg": 12,
+            "msg": 39,
             "voice_seconds": 0,
-            "drops": 1,
-            "claims": 0,
+            "drops": 23,
+            "claims": 1,
             "sells": 0,
             "rewarded": [
-                "msg_5"
+                "msg_5",
+                "drops_5"
             ]
         }
     },
@@ -4345,12 +4357,82 @@
                 "frame_id": null,
                 "token_code": null,
                 "token_img": null
+            },
+            {
+                "collection": "Pokémon G3",
+                "name": "Deoxys Attack",
+                "code": "73i5pr",
+                "value": 153,
+                "rarity": "legendary",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "American Horror Story",
+                "name": "Jeff Pfister",
+                "code": "bhvght",
+                "value": 2315,
+                "rarity": "rare",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "Los Padrinos Mágicos",
+                "name": "Foop",
+                "code": "nls3ju",
+                "value": 1145,
+                "rarity": "rare",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "Pokémon G1",
+                "name": "Exeggutor",
+                "code": "q0wokk",
+                "value": 3311,
+                "rarity": "common",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "Artistas Femeninas",
+                "name": "Melanie Martinez",
+                "code": "bab7j6",
+                "value": 1087,
+                "rarity": "common",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "Persona 5",
+                "name": "Ichiko Ohya",
+                "code": "3lv974",
+                "value": 3235,
+                "rarity": "common",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
+            },
+            {
+                "collection": "League of Legends",
+                "name": "Leblanc",
+                "code": "qoebbr",
+                "value": 1431,
+                "rarity": "epic",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null
             }
         ],
         "last_pull": 0,
-        "last_drop": 1782181879.5362806,
-        "last_drop_take": 1782181883.986197,
-        "gold": 0,
+        "last_drop": 1782267779.1762595,
+        "last_drop_take": 1782262255.1157875,
+        "gold": 20,
         "last_daily": 0,
         "last_work": 0,
         "wishlist": [],
@@ -4364,6 +4446,32 @@
             "legendary": 0,
             "mythic": 0
         },
-        "cat_game": {}
+        "cat_game": {},
+        "guilds": {
+            "1518799373373276160": {
+                "msg_count": 34,
+                "last_msg_date": "2026-06-23",
+                "streak": 1,
+                "reactions_received": 0,
+                "voice_seconds": 0,
+                "voice_week": {},
+                "screen_shared": false,
+                "max_voice_with": 0,
+                "achievements": []
+            }
+        },
+        "missions": {
+            "date": "2026-06-23",
+            "msg": 34,
+            "voice_seconds": 0,
+            "drops": 27,
+            "claims": 2,
+            "sells": 0,
+            "rewarded": [
+                "msg_5",
+                "drops_5"
+            ]
+        },
+        "last_gacha": 1782256933.84236
     }
 }

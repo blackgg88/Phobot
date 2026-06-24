@@ -13,8 +13,8 @@ from core.storage import get_paths, load_json
 from core.tokens import gen_unique_token_code, all_existing_token_codes, load_tokens_db
 from core.users import ensure_user, human_time, save_users
 from rendering.cards import pil_to_discord_file
-from rendering.pack import create_pack_image, create_drop_image
-from views.drop import DropView, RARITY_EMOJI
+from rendering.pack import create_pack_image, create_drop_image, create_single_drop_card
+from views.drop import MultiDropView, RARITY_EMOJI
 
 import random
 
@@ -167,22 +167,12 @@ class GachaCog(commands.Cog):
 
         img  = create_drop_image(pack_data)
         f    = pil_to_discord_file(img, "drop.png")
-        view = DropView(drop_user_id=ctx.author.id, cards=pack_data, drop_time=now)
-
-        lines = []
-        for i, c in enumerate(pack_data, 1):
-            emoji = RARITY_EMOJI.get(c["rarity"], "▪")
-            lines.append(
-                f"{i}. {emoji} | {c['display_code']} | {c['name']} • {c['collection']}"
-            )
-
-        e = discord.Embed(
-            description="\n".join(lines),
-            color=0xe74c3c,
+        view = MultiDropView(drop_user_id=ctx.author.id, cards=pack_data, drop_time=now)
+        await ctx.send(
+            content=f"**{ctx.author.display_name} está dropeando cartas**",
+            file=f,
+            view=view,
         )
-        e.set_author(name=f"{ctx.author.display_name} está dropeando cartas")
-        e.set_image(url="attachment://drop.png")
-        await ctx.send(embed=e, file=f, view=view)
         await notify_wishlist(self.bot, ctx.channel, pack_data, users)
 
 
