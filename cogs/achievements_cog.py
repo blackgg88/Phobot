@@ -53,6 +53,20 @@ class AchievementsCog(commands.Cog):
         wk = week_key_ar()
         stats["voice_week"][wk] = stats["voice_week"].get(wk, 0) + elapsed
 
+    # ── on_ready: registrar miembros ya en voz al arrancar ─
+
+    @commands.Cog.listener()
+    async def on_ready(self) -> None:
+        now = time.time()
+        for guild in self.bot.guilds:
+            for vc in guild.voice_channels:
+                for member in vc.members:
+                    if member.bot:
+                        continue
+                    key = (member.id, guild.id)
+                    if key not in self._voice_joined:
+                        self._voice_joined[key] = now
+
     # ── on_message ─────────────────────────────────────────
 
     @commands.Cog.listener()
@@ -181,7 +195,14 @@ class AchievementsCog(commands.Cog):
 
         users = _load()
         ensure_user(users, uid)
-        stats    = ensure_user_stats(users, uid)
+        stats = ensure_user_stats(users, uid)
+
+        # sumar tiempo en voz actual (sin guardarlo, solo para mostrar)
+        key = (target.id, ctx.guild.id) if ctx.guild else None
+        live_seconds = 0
+        if key and key in self._voice_joined:
+            live_seconds = int(time.time() - self._voice_joined[key])
+
         unlocked = set(stats.get("achievements", []))
         save_users(users)
 
@@ -189,7 +210,35 @@ class AchievementsCog(commands.Cog):
         done  = len(unlocked)
         pct   = int(done / total * 100) if total else 0
 
-        lines = [f"**{done}/{total} logros desbloqueados ({pct}%)**\n"]
+        # ── Contadores de progreso ──────────────────────────
+        mc  = stats.get("msg_count", 0)
+        vs  = stats.get("voice_seconds", 0) + live_seconds
+        wk  = week_key_ar()
+        vw_secs = stats.get("voice_week", {}).get(wk, 0) + live_seconds
+        streak  = stats.get("streak", 0)
+
+        def fmt_time(secs: int) -> str:
+            h = secs // 3600
+            m = (secs % 3600) // 60
+            return f"{h}h {m}m" if h else f"{m}m"
+
+        next_msg = next((n for n in [100, 500, 10_000] if mc < n), None)
+        next_voice_h = next((n for n in [1, 10, 50, 100, 500, 1_000] if vs < n * 3600), None)
+
+        counters = [
+            f"💬 Mensajes: **{mc:,}**" + (f" / {next_msg:,}" if next_msg else " ✅"),
+            f"🎙️ Llamadas total: **{fmt_time(vs)}**" + (f" / {next_voice_h}h" if next_voice_h else " ✅"),
+            f"📅 Esta semana: **{fmt_time(vw_secs)}** / 24h",
+            f"🔥 Racha: **{streak}** días",
+        ]
+        if live_seconds > 0:
+            counters.append(f"🔴 En llamada ahora: **{fmt_time(live_seconds)}** *(incluido arriba)*")
+
+        lines = [
+            f"**{done}/{total} logros desbloqueados ({pct}%)**\n",
+            "\n".join(counters),
+        ]
+
         current_cat = None
         for ach in ACHIEVEMENTS:
             if ach["cat"] != current_cat:

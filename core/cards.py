@@ -98,6 +98,12 @@ def normalize_card_instance(c: dict, cards_db: dict, existing_codes: Set[str]) -
     except Exception:
         frame_id = None
 
+    gen = c.get("gen")
+    try:
+        gen = int(gen) if gen is not None else None
+    except (TypeError, ValueError):
+        gen = None
+
     return {
         "collection": collection,
         "name":       name,
@@ -107,6 +113,7 @@ def normalize_card_instance(c: dict, cards_db: dict, existing_codes: Set[str]) -
         "frame_id":   frame_id,
         "token_code": c.get("token_code") or None,
         "token_img":  c.get("token_img")  or None,
+        "gen":        gen,
     }
 
 

@@ -83,6 +83,15 @@ class SingleDropView(discord.ui.View):
             inst = create_card_instance_from_meta(
                 self.card.get("collection"), self.card.get("name"), cards_db, users
             )
+            # guardar número de generación para efecto holo
+            import re as _re
+            dc = self.card.get("display_code", "")
+            _m = _re.search(r'\d+', dc)
+            if _m:
+                try:
+                    inst["gen"] = int(_m.group(0))
+                except Exception:
+                    pass
             users[uid].setdefault("cards", []).append(inst)
             users[uid]["last_drop_take"] = now
 
@@ -112,9 +121,10 @@ class SingleDropView(discord.ui.View):
                 pass
 
         rarity_label = rarity_es(inst.get("rarity", "common"))
+        gen_tag = f" | G·{inst['gen']}" if inst.get("gen") is not None else ""
         reply_text = (
             f"✅ **{interaction.user.display_name}** agarró **{self.card.get('name')}** "
-            f"(*{self.card.get('collection')}*) — {rarity_label} | `{inst['code']}` | P{inst['value']}"
+            f"(*{self.card.get('collection')}*) — {rarity_label} | `{inst['code']}`{gen_tag}"
         )
 
         try:
@@ -194,6 +204,15 @@ class MultiDropView(discord.ui.View):
 
             card = self.cards[card_idx]
             inst = create_card_instance_from_meta(card.get("collection"), card.get("name"), cards_db, users)
+            # guardar número de generación para efecto holo
+            import re as _re
+            dc = card.get("display_code", "")
+            _m = _re.search(r'\d+', dc)
+            if _m:
+                try:
+                    inst["gen"] = int(_m.group(0))
+                except Exception:
+                    pass
             users[uid].setdefault("cards", []).append(inst)
             users[uid]["last_drop_take"] = now
 
@@ -227,9 +246,10 @@ class MultiDropView(discord.ui.View):
                 pass
 
         rarity_label = rarity_es(inst.get("rarity", "common"))
+        gen_tag = f" | G·{inst['gen']}" if inst.get("gen") is not None else ""
         reply_text = (
             f"✅ **{interaction.user.display_name}** agarró **{card.get('name')}** "
-            f"(*{card.get('collection')}*) — {rarity_label} | `{inst['code']}` | P{inst['value']}"
+            f"(*{card.get('collection')}*) — {rarity_label} | `{inst['code']}`{gen_tag}"
         )
         try:
             await interaction.response.send_message(reply_text)
@@ -310,6 +330,14 @@ class DropView(discord.ui.View):
 
             card = self.cards[card_idx]
             inst = create_card_instance_from_meta(card.get("collection"), card.get("name"), cards_db, users)
+            import re as _re
+            dc = card.get("display_code", "")
+            _m = _re.search(r'\d+', dc)
+            if _m:
+                try:
+                    inst["gen"] = int(_m.group(0))
+                except Exception:
+                    pass
             users[uid].setdefault("cards", []).append(inst)
             users[uid]["last_drop_take"] = now
             from core.missions import progress as mission_progress
@@ -343,9 +371,10 @@ class DropView(discord.ui.View):
                 pass
 
         rarity_label = rarity_es(inst.get("rarity", "common"))
+        gen_tag = f" | G·{inst['gen']}" if inst.get("gen") is not None else ""
         reply_text = (
             f"✅ **{interaction.user.display_name}** agarró **{card.get('name')}** "
-            f"(*{card.get('collection')}*) — {rarity_label} | `{inst['code']}` | P{inst['value']}"
+            f"(*{card.get('collection')}*) — {rarity_label} | `{inst['code']}`{gen_tag}"
         )
 
         try:

@@ -10,7 +10,7 @@ from core.cards import rarity_es_upper
 from rendering.fonts import (
     get_bold_font, draw_centered_text_with_outline, fit_font_to_width,
 )
-from rendering.fx import apply_rarity_fx, safe_open_image, rarity_panel_color
+from rendering.fx import apply_rarity_fx, apply_holo_fx, safe_open_image, rarity_panel_color, HOLO_GEN_THRESHOLD
 from rendering.cards import draw_value_tag_on_card, draw_token_label_on_card
 
 
@@ -75,11 +75,6 @@ def create_pack_image(pulled_cards: List[dict]) -> Image.Image:
                 draw_token_label_on_card(card)
             except Exception:
                 pass
-        elif "value" in c and c["value"] is not None:
-            try:
-                draw_value_tag_on_card(card, f"P{int(c['value'])}", rarity)
-            except Exception:
-                pass
 
         card_draw = ImageDraw.Draw(card)
         center = card_w // 2
@@ -103,6 +98,27 @@ def create_single_drop_card(c: dict) -> Image.Image:
     return create_drop_image([c])
 
 
+def render_pver_card(cards_db: dict, inst: dict) -> Image.Image:
+    """Renderiza una carta al estilo drop (con nombre, serie y G) para !pver."""
+    collection = inst.get("collection", "")
+    name       = inst.get("name", "???")
+    rarity     = (inst.get("rarity", "common") or "common").lower()
+    gen        = inst.get("gen")
+    meta       = (cards_db.get(collection) or {}).get(name) or {}
+    img_rel    = inst.get("token_img") or inst.get("img") or meta.get("img", "")
+    display_code = f"G·{gen}" if gen is not None else "G·???"
+
+    pack_data = {
+        "collection":   collection,
+        "name":         name,
+        "img":          img_rel,
+        "rarity":       rarity,
+        "display_code": display_code,
+    }
+    # usar create_drop_image que ya maneja holo, gradiente y texto
+    return create_drop_image([pack_data])
+
+
 def create_drop_image(dropped_cards: List[dict]) -> Image.Image:
     card_w, card_h = 580, 900
     gap    = 36
@@ -123,11 +139,23 @@ def create_drop_image(dropped_cards: List[dict]) -> Image.Image:
         display_code = str(c.get("display_code", "G·???"))
         path         = c["img"]
 
+        # detectar si es holo por el número G del display_code
+        gen_num = None
+        try:
+            gen_num = int(display_code.split("·")[1])
+        except Exception:
+            pass
+        holo = gen_num is not None and gen_num <= HOLO_GEN_THRESHOLD
+
         r, g, b, _ = RARITY_STYLES.get(rarity, RARITY_STYLES["common"])
+        # colores del gradiente inferior: tornasol si es holo
+        gr, gg, gb = (180, 120, 255) if holo else (r, g, b)
 
         full = os.path.join(BASE_DIR, "images", path)
         card = _crop_fill(full, card_w, card_h)
-        card = apply_rarity_fx(card, RARITY_STYLES.get(rarity, RARITY_STYLES["common"]))
+        # para holo: aplicar solo después del gradiente y texto
+        if not holo:
+            card = apply_rarity_fx(card, RARITY_STYLES.get(rarity, RARITY_STYLES["common"]))
 
         draw   = ImageDraw.Draw(card)
         max_tw = card_w - margin - 12
@@ -141,14 +169,13 @@ def create_drop_image(dropped_cards: List[dict]) -> Image.Image:
         series_y = card_h - 118
         code_y   = card_h - 66
 
-        # paint-brush gradient: irregular top edge via per-column sine offsets
-        import math, random as _rnd
-        grad_base  = name_y - 28   # baseline where gradient starts
-        brush_amp  = 12            # max vertical variation (brushstroke roughness)
+        # gradiente inferior con borde de pincelada
+        import math
+        grad_base  = name_y - 28
+        brush_amp  = 12
         overlay = Image.new("RGBA", (card_w, card_h), (0, 0, 0, 0))
         ov_draw = ImageDraw.Draw(overlay)
         for x in range(card_w):
-            # combine two sines at different frequencies for organic look
             wave = (math.sin(x * 0.07) * 0.6 + math.sin(x * 0.19 + 1.3) * 0.4)
             col_start = grad_base + int(wave * brush_amp)
             col_h     = card_h - col_start
@@ -157,19 +184,19 @@ def create_drop_image(dropped_cards: List[dict]) -> Image.Image:
             for dy in range(col_h):
                 t     = dy / (col_h - 1) if col_h > 1 else 1
                 alpha = int(255 * (t ** 0.42))
-                ov_draw.point((x, col_start + dy), fill=(r, g, b, alpha))
+                ov_draw.point((x, col_start + dy), fill=(gr, gg, gb, alpha))
         card = Image.alpha_composite(card, overlay)
         draw = ImageDraw.Draw(card)
 
-        # name: white with rarity glow
+        # nombre con glow
         for dx in range(-3, 4):
             for dy in range(-3, 4):
                 if dx == 0 and dy == 0:
                     continue
-                draw.text((margin + dx, name_y + dy), name, font=font_name, fill=(r, g, b, 140))
+                draw.text((margin + dx, name_y + dy), name, font=font_name, fill=(gr, gg, gb, 140))
         draw.text((margin, name_y), name, font=font_name, fill=(255, 255, 255, 255))
 
-        # series: light gray
+        # serie
         for dx in (-2, 0, 2):
             for dy in (-2, 0, 2):
                 if dx == 0 and dy == 0:
@@ -177,7 +204,7 @@ def create_drop_image(dropped_cards: List[dict]) -> Image.Image:
                 draw.text((margin + dx, series_y + dy), collection, font=font_series, fill=(0, 0, 0, 160))
         draw.text((margin, series_y), collection, font=font_series, fill=(200, 200, 200, 255))
 
-        # code: pill badge
+        # badge del código G
         code_bbox = draw.textbbox((0, 0), display_code, font=font_code)
         cw = code_bbox[2] - code_bbox[0]
         ch = code_bbox[3] - code_bbox[1]
@@ -185,10 +212,16 @@ def create_drop_image(dropped_cards: List[dict]) -> Image.Image:
         bx1 = margin
         bx2 = bx1 + cw + px * 2
         by2 = code_y + ch + py * 2
+        badge_fill    = (40, 0, 60, 210) if holo else (0, 0, 0, 180)
+        badge_outline = (200, 150, 255, 200) if holo else (255, 255, 255, 80)
         draw.rounded_rectangle([bx1, code_y, bx2, by2], radius=8,
-                                fill=(0, 0, 0, 180), outline=(255, 255, 255, 80), width=1)
+                                fill=badge_fill, outline=badge_outline, width=2 if holo else 1)
         draw.text((bx1 + px, code_y + py - code_bbox[1]), display_code,
-                  font=font_code, fill=(220, 220, 220, 255))
+                  font=font_code, fill=(230, 180, 255, 255) if holo else (220, 220, 220, 255))
+
+        # aplicar holo DESPUÉS del gradiente y texto para que el borde quede encima de todo
+        if holo:
+            card = apply_holo_fx(card)
 
         card = _rounded_card(card, radius=18)
         x = i * (card_w + gap)

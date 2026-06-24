@@ -96,6 +96,23 @@ def user_owned_pairs(card_instances: List[dict]) -> Set[Tuple[str, str]]:
     return s
 
 
+def user_holo_pairs(card_instances: List[dict]) -> Set[Tuple[str, str]]:
+    """Pares (collection, name) donde el usuario tiene al menos una carta holo (gen ≤ 30)."""
+    from rendering.fx import HOLO_GEN_THRESHOLD
+    s: Set[Tuple[str, str]] = set()
+    for c in card_instances:
+        if not isinstance(c, dict):
+            continue
+        gen = c.get("gen")
+        if gen is not None:
+            try:
+                if int(gen) <= HOLO_GEN_THRESHOLD:
+                    s.add((c.get("collection"), c.get("name")))
+            except (ValueError, TypeError):
+                pass
+    return s
+
+
 def counts_by_char(card_instances: List[dict]) -> Counter:
     cnt: Counter = Counter()
     for c in card_instances:

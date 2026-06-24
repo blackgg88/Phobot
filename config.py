@@ -7,8 +7,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 COOLDOWN          = 8 * 60 * 60   # pgacha:  8 h
 DAILY_COOLDOWN    = 24 * 60 * 60  # pdaily: 24 h
 WORK_COOLDOWN     = 30 * 60       # pwork:  30 m
-DROP_COOLDOWN     = 8 * 60        # pdrop:   8 m
-DROP_TAKE_COOLDOWN = 4 * 60       # agarrar drop: 4 m
+DROP_COOLDOWN     = 8 * 60        # pdrop:   8 min
+DROP_TAKE_COOLDOWN = 4 * 60       # agarrar drop: 4 min
 DROP_PRIORITY_SECONDS = 3         # prioridad del dropeador
 
 # ── Economía ───────────────────────────────────────────────

@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw
 from config import BASE_DIR, CARD_SIZE, RARITY_STYLES
 from core.frames import get_frame_meta
 from rendering.fonts import get_bold_font, draw_centered_text_with_outline
-from rendering.fx import apply_rarity_fx, apply_frame_overlay, safe_open_image
+from rendering.fx import apply_rarity_fx, apply_frame_overlay, apply_holo_fx, is_holo, safe_open_image
 
 
 def pil_to_discord_file(img: Image.Image, filename: str) -> discord.File:
@@ -57,6 +57,23 @@ def draw_value_tag_on_card(card_img: Image.Image, value_text: str, rarity: str =
     draw.text((text_x, text_y), text, font=font, fill=(255, 255, 255, 255))
 
 
+def _draw_gen_badge(card_img: Image.Image, text: str, holo: bool = False) -> None:
+    """Badge G·N en la esquina inferior izquierda de la carta."""
+    draw  = ImageDraw.Draw(card_img)
+    font  = get_bold_font(18)
+    pad_x, pad_y = 10, 6
+    bbox  = draw.textbbox((0, 0), text, font=font)
+    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    bw, bh = tw + pad_x * 2, th + pad_y * 2
+    x0, y0 = 10, card_img.height - 10 - bh
+    x1, y1 = x0 + bw, y0 + bh
+    fill    = (40, 0, 60, 210)    if holo else (0, 0, 0, 180)
+    outline = (200, 150, 255, 220) if holo else (255, 255, 255, 80)
+    draw.rounded_rectangle([x0, y0, x1, y1], radius=7, fill=fill, outline=outline, width=2 if holo else 1)
+    text_col = (230, 180, 255, 255) if holo else (210, 210, 210, 255)
+    draw.text((x0 + pad_x, y0 + pad_y - bbox[1]), text, font=font, fill=text_col)
+
+
 def draw_token_label_on_card(card_img: Image.Image) -> None:
     w, h = card_img.size
     text = "Token"
@@ -100,14 +117,19 @@ def render_single_card_image(cards_db: dict, inst: dict) -> Image.Image:
             return apply_frame_overlay(card, fmeta)
         return card
 
-    fx_color = RARITY_STYLES.get(rarity, RARITY_STYLES["common"])
-    card = apply_rarity_fx(card, fx_color)
+    if is_holo(inst):
+        card = apply_holo_fx(card)
+    else:
+        fx_color = RARITY_STYLES.get(rarity, RARITY_STYLES["common"])
+        card = apply_rarity_fx(card, fx_color)
 
-    if inst.get("value") is not None:
+    gen = inst.get("gen")
+    if gen is not None:
         try:
-            draw_value_tag_on_card(card, f"P{int(inst['value'])}", rarity)
+            _draw_gen_badge(card, f"G·{gen}", holo=is_holo(inst))
         except Exception:
             pass
+
     return card
 
 

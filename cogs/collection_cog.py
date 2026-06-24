@@ -8,8 +8,10 @@ from core.cards import (
     migrate_users_cards, normalize_cards, rarity_es,
 )
 from core.storage import get_paths, load_json
-from core.users import ensure_user, pick_target_member, save_users, user_owned_pairs
+from core.users import ensure_user, pick_target_member, save_users, user_owned_pairs, user_holo_pairs
 from rendering.cards import pil_to_discord_file, render_single_card_image
+from rendering.fx import HOLO_GEN_THRESHOLD
+from rendering.pack import render_pver_card
 from views.album import CollectionPager, SingleCollectionPager
 from views.cards_list import CardsListView
 from views.frames_view import ConfirmRemoveFrameView, PVerFrameView
@@ -39,13 +41,16 @@ class CollectionCog(commands.Cog):
             await ctx.reply("No hay colecciones cargadas.")
             return
 
-        owned_set = user_owned_pairs(users[uid].get("cards", []))
+        cards     = users[uid].get("cards", [])
+        owned_set = user_owned_pairs(cards)
+        holo_set  = user_holo_pairs(cards)
         view      = CollectionPager(
             viewer_id=ctx.author.id,
             target_user_id=uid,
             collection_names=list(cards_db.keys()),
             cards_db=cards_db,
             owned_set=owned_set,
+            holo_set=holo_set,
         )
         f, tp  = view.build_file()
         embed  = view.make_embed(preview_pages=tp)
@@ -87,13 +92,16 @@ class CollectionCog(commands.Cog):
                 await ctx.reply(f"No encontré la colección `{col_query}`.")
                 return
 
-        owned_set = user_owned_pairs(users[uid].get("cards", []))
+        cards     = users[uid].get("cards", [])
+        owned_set = user_owned_pairs(cards)
+        holo_set  = user_holo_pairs(cards)
         view      = SingleCollectionPager(
             viewer_id=ctx.author.id,
             target_user_id=uid,
             collection_name=col_name,
             cards_db=cards_db,
             owned_set=owned_set,
+            holo_set=holo_set,
         )
         f     = view.build_file()
         embed = view.make_embed()
@@ -127,22 +135,31 @@ class CollectionCog(commands.Cog):
             await ctx.reply(f"No encontré la carta `{code}` en tu inventario.")
             return
 
-        img = render_single_card_image(cards_db, inst)
-        f   = pil_to_discord_file(img, "card.png")
-
         has_frame  = inst.get("frame_id") is not None
         has_token  = inst.get("token_code") is not None
         rarity_str = rarity_es(inst.get("rarity", "common"))
+        gen        = inst.get("gen")
+        gen_str    = f"G·{gen}" if gen is not None else None
+        is_holo    = gen is not None and int(gen) <= HOLO_GEN_THRESHOLD
+
+        desc = f"Código: `{code}` | Rareza: **{rarity_str}**"
+        if gen_str:
+            desc += f"\nGeneración: **{gen_str}**" + (" ✨" if is_holo else "")
+        if has_frame:
+            desc += f"\nMarco ID: **{inst['frame_id']}**"
+        if has_token:
+            desc += f"\nToken: `{inst['token_code']}`"
+
+        color = 0xc084fc if is_holo else 0x2ecc71
+
+        # render estilo drop (con nombre, serie y G)
+        img = render_pver_card(cards_db, inst)
+        f   = pil_to_discord_file(img, "card.png")
 
         e = discord.Embed(
-            title=f"🃏 {inst.get('name')} — {inst.get('collection')}",
-            description=(
-                f"Código: `{code}` | Rareza: **{rarity_str}**\n"
-                f"Valor: **P{inst.get('value')}**"
-                + (f"\nMarco ID: **{inst['frame_id']}**" if has_frame else "")
-                + (f"\nToken: `{inst['token_code']}`" if has_token else "")
-            ),
-            color=0x2ecc71,
+            title=f"{'✨ ' if is_holo else '🃏 '}{inst.get('name')} — {inst.get('collection')}",
+            description=desc,
+            color=color,
         ).set_image(url="attachment://card.png")
 
         view = PVerFrameView(user_id=ctx.author.id, inst=inst, cards_db=cards_db) if has_frame else None

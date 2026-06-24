@@ -7,7 +7,7 @@ import discord
 
 from core.cards import migrate_users_cards
 from core.storage import get_paths, load_json
-from core.users import ensure_user, save_users, user_owned_pairs
+from core.users import ensure_user, save_users, user_owned_pairs, user_holo_pairs
 from rendering.album import build_collection_page_image, collection_progress
 from rendering.cards import pil_to_discord_file
 from views.common import ack, edit_interaction_message
@@ -15,14 +15,16 @@ from views.common import ack, edit_interaction_message
 
 class CollectionPager(discord.ui.View):
     def __init__(self, *, viewer_id: int, target_user_id: str, collection_names,
-                 cards_db, owned_set: Set[Tuple[str, str]]):
+                 cards_db, owned_set: Set[Tuple[str, str]],
+                 holo_set: Set[Tuple[str, str]] = None):
         super().__init__(timeout=180)
-        self.viewer_id      = viewer_id
-        self.target_user_id = target_user_id
+        self.viewer_id        = viewer_id
+        self.target_user_id   = target_user_id
         self.collection_names = sorted(list(collection_names), key=lambda s: str(s).lower())
-        self.cards_db       = cards_db
-        self.owned_set      = owned_set
-        self.index          = 0
+        self.cards_db         = cards_db
+        self.owned_set        = owned_set
+        self.holo_set         = holo_set or set()
+        self.index            = 0
         self.per_page_preview = 12
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
@@ -52,6 +54,7 @@ class CollectionPager(discord.ui.View):
         img, total_pages = build_collection_page_image(
             self.current_name(), self.owned_set, self.cards_db,
             page=0, per_page=self.per_page_preview,
+            holo_set=self.holo_set,
         )
         return pil_to_discord_file(img, "album.png"), total_pages
 
@@ -89,13 +92,15 @@ class CollectionPager(discord.ui.View):
 
 class SingleCollectionPager(discord.ui.View):
     def __init__(self, *, viewer_id: int, target_user_id: str, collection_name: str,
-                 cards_db, owned_set: Set[Tuple[str, str]]):
+                 cards_db, owned_set: Set[Tuple[str, str]],
+                 holo_set: Set[Tuple[str, str]] = None):
         super().__init__(timeout=180)
         self.viewer_id       = viewer_id
         self.target_user_id  = target_user_id
         self.collection_name = collection_name
         self.cards_db        = cards_db
         self.owned_set       = owned_set
+        self.holo_set        = holo_set or set()
         self.page            = 0
         self.per_page        = 12
         self.total_pages     = 1
@@ -121,6 +126,7 @@ class SingleCollectionPager(discord.ui.View):
         img, total_pages = build_collection_page_image(
             self.collection_name, self.owned_set, self.cards_db,
             page=self.page, per_page=self.per_page,
+            holo_set=self.holo_set,
         )
         self.total_pages = total_pages
         return pil_to_discord_file(img, "album.png")
@@ -135,9 +141,11 @@ class SingleCollectionPager(discord.ui.View):
             save_users(users)
 
         ensure_user(users, self.target_user_id)
-        self.cards_db   = cards_db
-        self.owned_set  = user_owned_pairs(users[self.target_user_id].get("cards", []))
-        self.total_pages = max(1, ceil(len(list(self.cards_db[self.collection_name].keys())) / self.per_page))
+        cards             = users[self.target_user_id].get("cards", [])
+        self.cards_db     = cards_db
+        self.owned_set    = user_owned_pairs(cards)
+        self.holo_set     = user_holo_pairs(cards)
+        self.total_pages  = max(1, ceil(len(list(self.cards_db[self.collection_name].keys())) / self.per_page))
         if self.page >= self.total_pages:
             self.page = self.total_pages - 1
 
