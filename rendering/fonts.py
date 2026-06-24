@@ -9,14 +9,28 @@ def get_bold_font(size: int) -> ImageFont.FreeTypeFont:
     candidates = [
         os.path.join(BASE_DIR, "fonts", "DejaVuSans-Bold.ttf"),
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+        "/usr/share/fonts/liberation/LiberationSans-Bold.ttf",
         "/Library/Fonts/Arial Bold.ttf",
+        "/System/Library/Fonts/Helvetica.ttc",
         "arialbd.ttf",
     ]
     for p in candidates:
+        if p.startswith("/") or p.startswith(BASE_DIR):
+            if not os.path.isfile(p):
+                continue
         try:
             return ImageFont.truetype(p, size=size)
         except Exception:
             continue
+    # último recurso: avisar en consola para que sea fácil de detectar
+    import warnings
+    warnings.warn(
+        f"[Phobot] No se encontró ninguna fuente TTF. "
+        f"Poné DejaVuSans-Bold.ttf en {os.path.join(BASE_DIR, 'fonts')}",
+        stacklevel=2,
+    )
     return ImageFont.load_default()
 
 
