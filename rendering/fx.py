@@ -41,7 +41,7 @@ def apply_rarity_fx(card_rgba: Image.Image, color_rgba: Tuple) -> Image.Image:
     return out
 
 
-def apply_frame_overlay(card_img: Image.Image, frame_meta: dict) -> Image.Image:
+def apply_frame_overlay(card_img: Image.Image, frame_meta: dict, holo: bool = False) -> Image.Image:
     if not frame_meta:
         return card_img
     rel = frame_meta.get("img")
@@ -56,6 +56,12 @@ def apply_frame_overlay(card_img: Image.Image, frame_meta: dict) -> Image.Image:
         except Exception:
             card_rgba = card_rgba.resize(CARD_SIZE)
 
+    # si es holo, aplicar solo el shimmer iridiscente (sin borde) al card
+    if holo:
+        card_rgba = apply_holo_shimmer(card_rgba)
+        if card_rgba.size != CARD_SIZE:
+            card_rgba = card_rgba.resize(CARD_SIZE, Image.LANCZOS)
+
     frame = safe_open_image(full, size=FRAME_SIZE).convert("RGBA")
     if frame.size != FRAME_SIZE:
         try:
@@ -68,6 +74,63 @@ def apply_frame_overlay(card_img: Image.Image, frame_meta: dict) -> Image.Image:
     oy = (FRAME_SIZE[1] - CARD_SIZE[1]) // 2
     out.paste(card_rgba, (ox, oy), card_rgba)
     return Image.alpha_composite(out, frame)
+
+
+def apply_holo_shimmer(card_rgba: Image.Image) -> Image.Image:
+    """Solo el overlay iridiscente diagonal, sin borde arcoíris ni glow."""
+    w, h = card_rgba.size
+    rainbow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    dr = ImageDraw.Draw(rainbow)
+    palette = [
+        (200, 150, 255, 50), (140, 180, 255, 45), (130, 240, 220, 42),
+        (190, 250, 155, 40), (255, 245, 145, 42), (255, 175, 210, 48),
+        (215, 135, 255, 50),
+    ]
+    sw = (w + h) // len(palette) + 12
+    for i, col in enumerate(palette):
+        ox = i * sw - h
+        poly = [(ox, 0), (ox + sw, 0), (ox + sw + h, h), (ox + h, h)]
+        dr.polygon(poly, fill=col)
+    rainbow = rainbow.filter(ImageFilter.GaussianBlur(20))
+    return Image.alpha_composite(card_rgba.convert("RGBA"), rainbow)
+
+
+def apply_frame_overlay_scaled(card_img: Image.Image, frame_meta: dict) -> Image.Image:
+    """
+    Igual que apply_frame_overlay pero escala el marco para que se ajuste
+    exactamente al tamaño de la carta recibida (útil para cartas drop 580×900).
+    El marco se escala manteniendo la misma relación de aspecto de superposición.
+    """
+    if not frame_meta:
+        return card_img
+    rel = frame_meta.get("img")
+    if not rel:
+        return card_img
+
+    cw, ch = card_img.size
+    full  = os.path.join(BASE_DIR, "images", rel)
+
+    # Calcular el tamaño del marco escalado: misma proporción extra que FRAME vs CARD
+    extra_x = FRAME_SIZE[0] - CARD_SIZE[0]   # px extra horizontal del marco original
+    extra_y = FRAME_SIZE[1] - CARD_SIZE[1]   # px extra vertical
+    scale   = max(cw / CARD_SIZE[0], ch / CARD_SIZE[1])
+    fw = int(FRAME_SIZE[0] * scale)
+    fh = int(FRAME_SIZE[1] * scale)
+
+    frame = safe_open_image(full, size=(fw, fh)).convert("RGBA").resize((fw, fh), Image.LANCZOS)
+
+    # Centrar la carta dentro del marco escalado
+    out = Image.new("RGBA", (fw, fh), (0, 0, 0, 0))
+    ox  = (fw - cw) // 2
+    oy  = (fh - ch) // 2
+    card_rgba = card_img.convert("RGBA")
+    out.paste(card_rgba, (ox, oy), card_rgba)
+    result = Image.alpha_composite(out, frame)
+
+    # Recortar al tamaño de la carta (el marco sobresale alrededor)
+    cx0 = ox
+    cy0 = oy
+    return result.crop((cx0, cy0, cx0 + cw, cy0 + ch))
 
 
 def rarity_panel_color(rarity: str) -> Tuple:

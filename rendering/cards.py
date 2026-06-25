@@ -114,7 +114,7 @@ def render_single_card_image(cards_db: dict, inst: dict) -> Image.Image:
     if frame_id is not None:
         fmeta = get_frame_meta(int(frame_id))
         if fmeta:
-            return apply_frame_overlay(card, fmeta)
+            return apply_frame_overlay(card, fmeta, holo=is_holo(inst))
         return card
 
     if is_holo(inst):

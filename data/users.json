@@ -1,1 +1,80 @@
-{}
+{
+    "1048304294492905576": {
+        "cards": [
+            {
+                "collection": "Higurashi: When They Cry",
+                "name": "Keiichi Maebara",
+                "code": "z3dcxy",
+                "value": 1634,
+                "rarity": "epic",
+                "frame_id": 6,
+                "token_code": null,
+                "token_img": null,
+                "gen": 6947
+            },
+            {
+                "collection": "Pokémon G1",
+                "name": "Kakuna",
+                "code": "a0x6do",
+                "value": 2060,
+                "rarity": "common",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null,
+                "gen": 9407
+            },
+            {
+                "collection": "League of Legends",
+                "name": "Morgana",
+                "code": "hyhxgv",
+                "value": 3804,
+                "rarity": "common",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null,
+                "gen": 1014
+            }
+        ],
+        "last_pull": 0,
+        "last_drop": 1782353025.7655582,
+        "last_drop_take": 1782353034.4865284,
+        "gold": 235,
+        "last_daily": 0,
+        "last_work": 0,
+        "wishlist": [],
+        "museum": [
+            "z3dcxy",
+            "hyhxgv"
+        ],
+        "frames": [],
+        "tokens": [],
+        "packs": {
+            "common": 0,
+            "rare": 0,
+            "epic": 0,
+            "legendary": 0,
+            "mythic": 0
+        },
+        "cat_game": {},
+        "achievements": [],
+        "msg_count": 39,
+        "last_msg_date": "2026-06-24",
+        "streak": 1,
+        "reactions_received": 0,
+        "voice_seconds": 0,
+        "voice_week": {},
+        "screen_shared": false,
+        "max_voice_with": 0,
+        "missions": {
+            "date": "2026-06-24",
+            "msg": 39,
+            "voice_seconds": 0,
+            "drops": 3,
+            "claims": 3,
+            "sells": 0,
+            "rewarded": [
+                "msg_5"
+            ]
+        }
+    }
+}

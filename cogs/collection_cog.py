@@ -9,12 +9,13 @@ from core.cards import (
 )
 from core.storage import get_paths, load_json
 from core.users import ensure_user, pick_target_member, save_users, user_owned_pairs, user_holo_pairs
+from core.frames import get_frame_meta
 from rendering.cards import pil_to_discord_file, render_single_card_image
 from rendering.fx import HOLO_GEN_THRESHOLD
 from rendering.pack import render_pver_card
 from views.album import CollectionPager, SingleCollectionPager
 from views.cards_list import CardsListView
-from views.frames_view import ConfirmRemoveFrameView, PVerFrameView
+from views.frames_view import ApplyFrameView, RemoveFrameView
 
 
 class CollectionCog(commands.Cog):
@@ -122,7 +123,7 @@ class CollectionCog(commands.Cog):
     @commands.command(name="pver")
     async def pver_cmd(self, ctx: commands.Context, code: str = "") -> None:
         if not code:
-            await ctx.reply("Uso: `pver <código>`")
+            await ctx.reply("Uso: `!pver <código>`")
             return
 
         code  = code.strip().lower()
@@ -141,18 +142,20 @@ class CollectionCog(commands.Cog):
         gen        = inst.get("gen")
         gen_str    = f"G·{gen}" if gen is not None else None
         is_holo    = gen is not None and int(gen) <= HOLO_GEN_THRESHOLD
+        is_owner   = ctx.author.id == ctx.author.id  # siempre true — la carta se busca en su inventario
 
         desc = f"Código: `{code}` | Rareza: **{rarity_str}**"
         if gen_str:
             desc += f"\nGeneración: **{gen_str}**" + (" ✨" if is_holo else "")
         if has_frame:
-            desc += f"\nMarco ID: **{inst['frame_id']}**"
+            meta = get_frame_meta(inst["frame_id"])
+            frame_name = meta["name"] if meta else f"#{inst['frame_id']}"
+            desc += f"\nMarco: **{frame_name}**"
         if has_token:
             desc += f"\nToken: `{inst['token_code']}`"
 
         color = 0xc084fc if is_holo else 0x2ecc71
 
-        # render estilo drop (con nombre, serie y G)
         img = render_pver_card(cards_db, inst)
         f   = pil_to_discord_file(img, "card.png")
 
@@ -162,16 +165,13 @@ class CollectionCog(commands.Cog):
             color=color,
         ).set_image(url="attachment://card.png")
 
-        view = PVerFrameView(user_id=ctx.author.id, inst=inst, cards_db=cards_db) if has_frame else None
-
-        if view:
-            if has_frame:
-                remove_view = ConfirmRemoveFrameView(user_id=ctx.author.id, inst=inst, cards_db=cards_db)
-                await ctx.reply(embed=e, file=f, view=remove_view)
-            else:
-                await ctx.reply(embed=e, file=f, view=view)
+        # botones de marco solo para el dueño
+        if has_frame:
+            view = RemoveFrameView(user_id=ctx.author.id, inst=inst, cards_db=cards_db)
         else:
-            await ctx.reply(embed=e, file=f)
+            view = ApplyFrameView(user_id=ctx.author.id, inst=inst, cards_db=cards_db)
+
+        await ctx.reply(embed=e, file=f, view=view)
 
 
 async def setup(bot: commands.Bot) -> None:

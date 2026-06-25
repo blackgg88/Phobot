@@ -10,7 +10,7 @@ from core.cards import rarity_es_upper
 from rendering.fonts import (
     get_bold_font, draw_centered_text_with_outline, fit_font_to_width,
 )
-from rendering.fx import apply_rarity_fx, apply_holo_fx, safe_open_image, rarity_panel_color, HOLO_GEN_THRESHOLD
+from rendering.fx import apply_rarity_fx, apply_holo_fx, apply_frame_overlay_scaled, safe_open_image, rarity_panel_color, HOLO_GEN_THRESHOLD
 from rendering.cards import draw_value_tag_on_card, draw_token_label_on_card
 
 
@@ -99,7 +99,15 @@ def create_single_drop_card(c: dict) -> Image.Image:
 
 
 def render_pver_card(cards_db: dict, inst: dict) -> Image.Image:
-    """Renderiza una carta al estilo drop (con nombre, serie y G) para !pver."""
+    """Renderiza una carta para !pver.
+    - Con marco: imagen limpia + frame overlay (300x420 → 350x470). Sin texto.
+    - Sin marco: estilo drop con nombre, serie y G badge (580x900).
+    """
+    # carta con marco: usar render_single_card_image que ya maneja el overlay correctamente
+    if inst.get("frame_id") is not None:
+        from rendering.cards import render_single_card_image
+        return render_single_card_image(cards_db, inst)
+
     collection = inst.get("collection", "")
     name       = inst.get("name", "???")
     rarity     = (inst.get("rarity", "common") or "common").lower()
@@ -115,7 +123,6 @@ def render_pver_card(cards_db: dict, inst: dict) -> Image.Image:
         "rarity":       rarity,
         "display_code": display_code,
     }
-    # usar create_drop_image que ya maneja holo, gradiente y texto
     return create_drop_image([pack_data])
 
 
