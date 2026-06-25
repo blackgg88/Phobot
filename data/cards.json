@@ -10,8 +10,23 @@
       "rarity": "legendary",
       "chance": 3
     },
+    "Diana Ross": {
+      "img": "artistasf/DianaRoss.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Janet Jackson": {
+      "img": "artistasf/JanetJackson.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
     "Madonna": {
       "img": "artistasf/Madonna.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Tina Turner": {
+      "img": "artistasf/TinaTurner.png",
       "rarity": "legendary",
       "chance": 3
     },
@@ -20,13 +35,18 @@
       "rarity": "legendary",
       "chance": 3
     },
-    "Ariana Grande": {
-      "img": "artistasf/ArianaGrande.png",
+    "Amy Lee": {
+      "img": "artistasf/AmyLee.png",
       "rarity": "epic",
       "chance": 15
     },
-    "Amy Lee": {
-      "img": "artistasf/AmyLee.png",
+    "Ana Mena": {
+      "img": "artistasf/AnaMena.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Ariana Grande": {
+      "img": "artistasf/ArianaGrande.png",
       "rarity": "epic",
       "chance": 15
     },
@@ -45,6 +65,31 @@
       "rarity": "epic",
       "chance": 15
     },
+    "Fergie": {
+      "img": "artistasf/Fergie.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Gloria Trevi": {
+      "img": "artistasf/GloriaTrevi.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Ice Spice": {
+      "img": "artistasf/IceSpice.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Jennie": {
+      "img": "artistasf/Jennie.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Jisoo": {
+      "img": "artistasf/Jisoo.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Karol G": {
       "img": "artistasf/KarolG.png",
       "rarity": "epic",
@@ -55,8 +100,23 @@
       "rarity": "epic",
       "chance": 15
     },
+    "Lisa": {
+      "img": "artistasf/Lisa.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Lola Índigo": {
       "img": "artistasf/LolaIndigo.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Lorde": {
+      "img": "artistasf/Lorde.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Marina": {
+      "img": "artistasf/Marina.png",
       "rarity": "epic",
       "chance": 15
     },
@@ -65,8 +125,28 @@
       "rarity": "epic",
       "chance": 15
     },
+    "Nicki Nicole": {
+      "img": "artistasf/NickiNicole.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Poppy": {
+      "img": "artistasf/Poppy.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Rihanna": {
       "img": "artistasf/Rihanna.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Rosalía": {
+      "img": "artistasf/Rosalia.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Rosé": {
+      "img": "artistasf/Rose.png",
       "rarity": "epic",
       "chance": 15
     },
@@ -110,8 +190,28 @@
       "rarity": "rare",
       "chance": 30
     },
+    "Camila Cabello": {
+      "img": "artistasf/CamilaCabello.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Cardi B": {
+      "img": "artistasf/CardiB.png",
+      "rarity": "rare",
+      "chance": 30
+    },
     "Dua Lipa": {
       "img": "artistasf/DuaLipa.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Halsey": {
+      "img": "artistasf/Halsey.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Jessie J": {
+      "img": "artistasf/JessieJ.png",
       "rarity": "rare",
       "chance": 30
     },
@@ -135,8 +235,18 @@
       "rarity": "rare",
       "chance": 30
     },
+    "Mariah Carey": {
+      "img": "artistasf/MariahCarey.png",
+      "rarity": "rare",
+      "chance": 30
+    },
     "Miley Cyrus": {
       "img": "artistasf/MileyCyrus.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Nathy Peluso": {
+      "img": "artistasf/NathyPeluso.png",
       "rarity": "rare",
       "chance": 30
     },
@@ -145,8 +255,18 @@
       "rarity": "rare",
       "chance": 30
     },
+    "Rita Ora": {
+      "img": "artistasf/RitaOra.png",
+      "rarity": "rare",
+      "chance": 30
+    },
     "Sia": {
       "img": "artistasf/Sia.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Tate McRae": {
+      "img": "artistasf/TateMcRae.png",
       "rarity": "rare",
       "chance": 30
     },
@@ -154,6 +274,26 @@
       "img": "artistasf/TaylorSwift.png",
       "rarity": "rare",
       "chance": 30
+    },
+    "Thalía": {
+      "img": "artistasf/Thalia.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Carly Rae Jepsen": {
+      "img": "artistasf/CarlyRaeJepsen.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Cazzu": {
+      "img": "artistasf/Cazzu.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Charli XCX": {
+      "img": "artistasf/CharliXCX.png",
+      "rarity": "common",
+      "chance": 60
     },
     "Demi Lovato": {
       "img": "artistasf/DemiLovato.png",
@@ -170,6 +310,11 @@
       "rarity": "common",
       "chance": 60
     },
+    "Iggy Azalea": {
+      "img": "artistasf/IggyAzalea.png",
+      "rarity": "common",
+      "chance": 60
+    },
     "Jennifer Lopez": {
       "img": "artistasf/JenniferLopez.png",
       "rarity": "common",
@@ -177,6 +322,11 @@
     },
     "Katy Perry": {
       "img": "artistasf/KatyPerry.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Kylie Minogue": {
+      "img": "artistasf/KylieMinogue.png",
       "rarity": "common",
       "chance": 60
     },
@@ -205,8 +355,18 @@
       "rarity": "common",
       "chance": 60
     },
+    "Paulina Rubio": {
+      "img": "artistasf/PaulinaRubio.png",
+      "rarity": "common",
+      "chance": 60
+    },
     "Shakira": {
       "img": "artistasf/Shakira.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Zara Larsson": {
+      "img": "artistasf/ZaraLarsson.png",
       "rarity": "common",
       "chance": 60
     }
@@ -1336,6 +1496,11 @@
       "rarity": "legendary",
       "chance": 3
     },
+    "Silver Wolf LvL 999": {
+      "img": "hsr/SilverWolfLvL999.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
     "Sra. Herta": {
       "img": "hsr/SraHerta.png",
       "rarity": "legendary",
@@ -1376,6 +1541,11 @@
       "rarity": "epic",
       "chance": 15
     },
+    "Chispa": {
+      "img": "hsr/Chispa.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Cisne Negro": {
       "img": "hsr/CisneNegro.png",
       "rarity": "epic",
@@ -1383,6 +1553,11 @@
     },
     "Dan Heng Imbibitor Lunae": {
       "img": "hsr/DanHengImbibitorLunae.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Evanescia": {
+      "img": "hsr/Evanescia.png",
       "rarity": "epic",
       "chance": 15
     },
@@ -1491,10 +1666,25 @@
       "rarity": "epic",
       "chance": 15
     },
+    "Yao Guang": {
+      "img": "hsr/YaoGuang.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Yunli": {
       "img": "hsr/Yunli.png",
       "rarity": "epic",
       "chance": 15
+    },
+    "Ashveil": {
+      "img": "hsr/Ashveil.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Céridra": {
+      "img": "hsr/Ceridra.png",
+      "rarity": "rare",
+      "chance": 30
     },
     "Cipher": {
       "img": "hsr/Cipher.png",
@@ -1503,11 +1693,6 @@
     },
     "Clara": {
       "img": "hsr/Clara.png",
-      "rarity": "rare",
-      "chance": 30
-    },
-    "Céridra": {
-      "img": "hsr/Ceridra.png",
       "rarity": "rare",
       "chance": 30
     },
@@ -1548,6 +1733,11 @@
     },
     "Luocha": {
       "img": "hsr/Luocha.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Mortenax Blade": {
+      "img": "hsr/MortenaxBlade.png",
       "rarity": "rare",
       "chance": 30
     },
@@ -4611,8 +4801,23 @@
       "rarity": "epic",
       "chance": 15
     },
+    "Kaufmo": {
+      "img": "digitalcircus/Kaufmo.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Queenie": {
+      "img": "digitalcircus/Queenie.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Ragatha": {
       "img": "digitalcircus/Ragatha.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Ribbit": {
+      "img": "digitalcircus/Ribbit.png",
       "rarity": "epic",
       "chance": 15
     },
@@ -4626,8 +4831,18 @@
       "rarity": "rare",
       "chance": 30
     },
+    "Gummigoo": {
+      "img": "digitalcircus/Gummigoo.png",
+      "rarity": "rare",
+      "chance": 30
+    },
     "Bubble": {
       "img": "digitalcircus/Bubble.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Ming": {
+      "img": "digitalcircus/Ming.png",
       "rarity": "common",
       "chance": 60
     }
@@ -7917,7 +8132,6 @@
       "rarity": "legendary",
       "chance": 3
     },
-
     "Claudia": {
       "img": "Violet/Claudia.png",
       "rarity": "epic",
@@ -7928,7 +8142,6 @@
       "rarity": "epic",
       "chance": 15
     },
-
     "Cattleya": {
       "img": "Violet/Cattleya.png",
       "rarity": "rare",
@@ -7944,7 +8157,6 @@
       "rarity": "rare",
       "chance": 30
     },
-
     "Benedict": {
       "img": "Violet/Benedict.png",
       "rarity": "common",
@@ -7977,7 +8189,6 @@
       "rarity": "legendary",
       "chance": 3
     },
-
     "Crash": {
       "img": "crash/Crash.png",
       "rarity": "epic",
@@ -7993,7 +8204,6 @@
       "rarity": "epic",
       "chance": 15
     },
-
     "Coco": {
       "img": "crash/Coco.png",
       "rarity": "rare",
@@ -8014,7 +8224,6 @@
       "rarity": "rare",
       "chance": 30
     },
-
     "Aku Aku": {
       "img": "crash/AkuAku.png",
       "rarity": "common",
@@ -8072,7 +8281,6 @@
       "rarity": "legendary",
       "chance": 3
     },
-
     "Ashley Marin": {
       "img": "pll/AshleyMarin.png",
       "rarity": "epic",
@@ -8143,7 +8351,6 @@
       "rarity": "epic",
       "chance": 15
     },
-
     "Archer Dunhill": {
       "img": "pll/ArcherDunhill.png",
       "rarity": "rare",
@@ -8224,7 +8431,6 @@
       "rarity": "rare",
       "chance": 30
     },
-
     "Carla Grunwald": {
       "img": "pll/CarlaGrunwald.png",
       "rarity": "common",
@@ -8307,7 +8513,6 @@
       "rarity": "legendary",
       "chance": 3
     },
-
     "Kevin": {
       "img": "spooky/Kevin.png",
       "rarity": "epic",
@@ -8323,7 +8528,6 @@
       "rarity": "epic",
       "chance": 15
     },
-
     "Dexter": {
       "img": "spooky/Dexter.png",
       "rarity": "rare",
@@ -8349,7 +8553,6 @@
       "rarity": "rare",
       "chance": 30
     },
-
     "Carmen": {
       "img": "spooky/Carmen.png",
       "rarity": "common",
@@ -8407,26 +8610,51 @@
     }
   },
   "Pokémon G3": {
-    "Treecko": { "img": "pkm3/Treecko.png", "rarity": "epic", "chance": 15 },
-    "Grovyle": { "img": "pkm3/Grovyle.png", "rarity": "epic", "chance": 15 },
-    "Sceptile": { "img": "pkm3/Sceptile.png", "rarity": "epic", "chance": 15 },
-
-    "Torchic": { "img": "pkm3/Torchic.png", "rarity": "epic", "chance": 15 },
+    "Treecko": {
+      "img": "pkm3/Treecko.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Grovyle": {
+      "img": "pkm3/Grovyle.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Sceptile": {
+      "img": "pkm3/Sceptile.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Torchic": {
+      "img": "pkm3/Torchic.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Combusken": {
       "img": "pkm3/Combusken.png",
       "rarity": "epic",
       "chance": 15
     },
-    "Blaziken": { "img": "pkm3/Blaziken.png", "rarity": "epic", "chance": 15 },
-
-    "Mudkip": { "img": "pkm3/Mudkip.png", "rarity": "epic", "chance": 15 },
+    "Blaziken": {
+      "img": "pkm3/Blaziken.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Mudkip": {
+      "img": "pkm3/Mudkip.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Marshtomp": {
       "img": "pkm3/Marshtomp.png",
       "rarity": "epic",
       "chance": 15
     },
-    "Swampert": { "img": "pkm3/Swampert.png", "rarity": "epic", "chance": 15 },
-
+    "Swampert": {
+      "img": "pkm3/Swampert.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Poochyena": {
       "img": "pkm3/Poochyena.png",
       "rarity": "common",
@@ -8437,98 +8665,236 @@
       "rarity": "common",
       "chance": 60
     },
-
     "Zigzagoon": {
       "img": "pkm3/Zigzagoon.png",
       "rarity": "common",
       "chance": 60
     },
-    "Linoone": { "img": "pkm3/Linoone.png", "rarity": "common", "chance": 60 },
-
-    "Wurmple": { "img": "pkm3/Wurmple.png", "rarity": "common", "chance": 60 },
-    "Silcoon": { "img": "pkm3/Silcoon.png", "rarity": "common", "chance": 60 },
+    "Linoone": {
+      "img": "pkm3/Linoone.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Wurmple": {
+      "img": "pkm3/Wurmple.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Silcoon": {
+      "img": "pkm3/Silcoon.png",
+      "rarity": "common",
+      "chance": 60
+    },
     "Beautifly": {
       "img": "pkm3/Beautifly.png",
       "rarity": "common",
       "chance": 60
     },
-    "Cascoon": { "img": "pkm3/Cascoon.png", "rarity": "common", "chance": 60 },
-    "Dustox": { "img": "pkm3/Dustox.png", "rarity": "common", "chance": 60 },
-
-    "Lotad": { "img": "pkm3/Lotad.png", "rarity": "rare", "chance": 30 },
-    "Lombre": { "img": "pkm3/Lombre.png", "rarity": "rare", "chance": 30 },
-    "Ludicolo": { "img": "pkm3/Ludicolo.png", "rarity": "rare", "chance": 30 },
-
-    "Seedot": { "img": "pkm3/Seedot.png", "rarity": "rare", "chance": 30 },
-    "Nuzleaf": { "img": "pkm3/Nuzleaf.png", "rarity": "rare", "chance": 30 },
-    "Shiftry": { "img": "pkm3/Shiftry.png", "rarity": "rare", "chance": 30 },
-
-    "Taillow": { "img": "pkm3/Taillow.png", "rarity": "common", "chance": 60 },
-    "Swellow": { "img": "pkm3/Swellow.png", "rarity": "common", "chance": 60 },
-
-    "Wingull": { "img": "pkm3/Wingull.png", "rarity": "rare", "chance": 30 },
-    "Pelipper": { "img": "pkm3/Pelipper.png", "rarity": "rare", "chance": 30 },
-
-    "Ralts": { "img": "pkm3/Ralts.png", "rarity": "epic", "chance": 15 },
-    "Kirlia": { "img": "pkm3/Kirlia.png", "rarity": "epic", "chance": 15 },
+    "Cascoon": {
+      "img": "pkm3/Cascoon.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Dustox": {
+      "img": "pkm3/Dustox.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Lotad": {
+      "img": "pkm3/Lotad.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Lombre": {
+      "img": "pkm3/Lombre.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Ludicolo": {
+      "img": "pkm3/Ludicolo.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Seedot": {
+      "img": "pkm3/Seedot.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Nuzleaf": {
+      "img": "pkm3/Nuzleaf.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Shiftry": {
+      "img": "pkm3/Shiftry.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Taillow": {
+      "img": "pkm3/Taillow.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Swellow": {
+      "img": "pkm3/Swellow.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Wingull": {
+      "img": "pkm3/Wingull.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Pelipper": {
+      "img": "pkm3/Pelipper.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Ralts": {
+      "img": "pkm3/Ralts.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Kirlia": {
+      "img": "pkm3/Kirlia.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Gardevoir": {
       "img": "pkm3/Gardevoir.png",
       "rarity": "epic",
       "chance": 15
     },
-
-    "Surskit": { "img": "pkm3/Surskit.png", "rarity": "common", "chance": 60 },
+    "Surskit": {
+      "img": "pkm3/Surskit.png",
+      "rarity": "common",
+      "chance": 60
+    },
     "Masquerain": {
       "img": "pkm3/Masquerain.png",
       "rarity": "common",
       "chance": 60
     },
-
     "Shroomish": {
       "img": "pkm3/Shroomish.png",
       "rarity": "rare",
       "chance": 30
     },
-    "Breloom": { "img": "pkm3/Breloom.png", "rarity": "rare", "chance": 30 },
-
-    "Slakoth": { "img": "pkm3/Slakoth.png", "rarity": "rare", "chance": 30 },
-    "Vigoroth": { "img": "pkm3/Vigoroth.png", "rarity": "rare", "chance": 30 },
-    "Slaking": { "img": "pkm3/Slaking.png", "rarity": "rare", "chance": 30 },
-
-    "Nincada": { "img": "pkm3/Nincada.png", "rarity": "common", "chance": 60 },
-    "Ninjask": { "img": "pkm3/Ninjask.png", "rarity": "common", "chance": 60 },
-    "Shedinja": { "img": "pkm3/Shedinja.png", "rarity": "epic", "chance": 15 },
-
-    "Whismur": { "img": "pkm3/Whismur.png", "rarity": "common", "chance": 60 },
-    "Loudred": { "img": "pkm3/Loudred.png", "rarity": "common", "chance": 60 },
-    "Exploud": { "img": "pkm3/Exploud.png", "rarity": "common", "chance": 60 },
-
-    "Makuhita": { "img": "pkm3/Makuhita.png", "rarity": "rare", "chance": 30 },
-    "Hariyama": { "img": "pkm3/Hariyama.png", "rarity": "rare", "chance": 30 },
-
-    "Azurill": { "img": "pkm3/Azurill.png", "rarity": "rare", "chance": 30 },
+    "Breloom": {
+      "img": "pkm3/Breloom.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Slakoth": {
+      "img": "pkm3/Slakoth.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Vigoroth": {
+      "img": "pkm3/Vigoroth.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Slaking": {
+      "img": "pkm3/Slaking.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Nincada": {
+      "img": "pkm3/Nincada.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Ninjask": {
+      "img": "pkm3/Ninjask.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Shedinja": {
+      "img": "pkm3/Shedinja.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Whismur": {
+      "img": "pkm3/Whismur.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Loudred": {
+      "img": "pkm3/Loudred.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Exploud": {
+      "img": "pkm3/Exploud.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Makuhita": {
+      "img": "pkm3/Makuhita.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Hariyama": {
+      "img": "pkm3/Hariyama.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Azurill": {
+      "img": "pkm3/Azurill.png",
+      "rarity": "rare",
+      "chance": 30
+    },
     "Nosepass": {
       "img": "pkm3/Nosepass.png",
       "rarity": "common",
       "chance": 60
     },
-    "Skitty": { "img": "pkm3/Skitty.png", "rarity": "common", "chance": 60 },
+    "Skitty": {
+      "img": "pkm3/Skitty.png",
+      "rarity": "common",
+      "chance": 60
+    },
     "Delcatty": {
       "img": "pkm3/Delcatty.png",
       "rarity": "common",
       "chance": 60
     },
-
-    "Sableye": { "img": "pkm3/Sableye.png", "rarity": "rare", "chance": 30 },
-    "Mawile": { "img": "pkm3/Mawile.png", "rarity": "epic", "chance": 15 },
-
-    "Aron": { "img": "pkm3/Aron.png", "rarity": "epic", "chance": 15 },
-    "Lairon": { "img": "pkm3/Lairon.png", "rarity": "epic", "chance": 15 },
-    "Aggron": { "img": "pkm3/Aggron.png", "rarity": "epic", "chance": 15 },
-
-    "Meditite": { "img": "pkm3/Meditite.png", "rarity": "rare", "chance": 30 },
-    "Medicham": { "img": "pkm3/Medicham.png", "rarity": "rare", "chance": 30 },
-
+    "Sableye": {
+      "img": "pkm3/Sableye.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Mawile": {
+      "img": "pkm3/Mawile.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Aron": {
+      "img": "pkm3/Aron.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Lairon": {
+      "img": "pkm3/Lairon.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Aggron": {
+      "img": "pkm3/Aggron.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Meditite": {
+      "img": "pkm3/Meditite.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Medicham": {
+      "img": "pkm3/Medicham.png",
+      "rarity": "rare",
+      "chance": 30
+    },
     "Electrike": {
       "img": "pkm3/Electrike.png",
       "rarity": "rare",
@@ -8539,80 +8905,211 @@
       "rarity": "rare",
       "chance": 30
     },
-
-    "Plusle": { "img": "pkm3/Plusle.png", "rarity": "rare", "chance": 30 },
-    "Minun": { "img": "pkm3/Minun.png", "rarity": "rare", "chance": 30 },
-
-    "Volbeat": { "img": "pkm3/Volbeat.png", "rarity": "common", "chance": 60 },
+    "Plusle": {
+      "img": "pkm3/Plusle.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Minun": {
+      "img": "pkm3/Minun.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Volbeat": {
+      "img": "pkm3/Volbeat.png",
+      "rarity": "common",
+      "chance": 60
+    },
     "Illumise": {
       "img": "pkm3/Illumise.png",
       "rarity": "common",
       "chance": 60
     },
-
-    "Roselia": { "img": "pkm3/Roselia.png", "rarity": "rare", "chance": 30 },
-
-    "Gulpin": { "img": "pkm3/Gulpin.png", "rarity": "common", "chance": 60 },
-    "Swalot": { "img": "pkm3/Swalot.png", "rarity": "common", "chance": 60 },
-
-    "Carvanha": { "img": "pkm3/Carvanha.png", "rarity": "rare", "chance": 30 },
-    "Sharpedo": { "img": "pkm3/Sharpedo.png", "rarity": "rare", "chance": 30 },
-
-    "Wailmer": { "img": "pkm3/Wailmer.png", "rarity": "rare", "chance": 30 },
-    "Wailord": { "img": "pkm3/Wailord.png", "rarity": "rare", "chance": 30 },
-
-    "Numel": { "img": "pkm3/Numel.png", "rarity": "common", "chance": 60 },
+    "Roselia": {
+      "img": "pkm3/Roselia.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Gulpin": {
+      "img": "pkm3/Gulpin.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Swalot": {
+      "img": "pkm3/Swalot.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Carvanha": {
+      "img": "pkm3/Carvanha.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Sharpedo": {
+      "img": "pkm3/Sharpedo.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Wailmer": {
+      "img": "pkm3/Wailmer.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Wailord": {
+      "img": "pkm3/Wailord.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Numel": {
+      "img": "pkm3/Numel.png",
+      "rarity": "common",
+      "chance": 60
+    },
     "Camerupt": {
       "img": "pkm3/Camerupt.png",
       "rarity": "common",
       "chance": 60
     },
-
-    "Torkoal": { "img": "pkm3/Torkoal.png", "rarity": "epic", "chance": 15 },
-
-    "Spoink": { "img": "pkm3/Spoink.png", "rarity": "common", "chance": 60 },
-    "Grumpig": { "img": "pkm3/Grumpig.png", "rarity": "common", "chance": 60 },
-    "Spinda": { "img": "pkm3/Spinda.png", "rarity": "epic", "chance": 15 },
-
-    "Trapinch": { "img": "pkm3/Trapinch.png", "rarity": "epic", "chance": 15 },
-    "Vibrava": { "img": "pkm3/Vibrava.png", "rarity": "epic", "chance": 15 },
-    "Flygon": { "img": "pkm3/Flygon.png", "rarity": "epic", "chance": 15 },
-
-    "Cacnea": { "img": "pkm3/Cacnea.png", "rarity": "rare", "chance": 30 },
-    "Cacturne": { "img": "pkm3/Cacturne.png", "rarity": "rare", "chance": 30 },
-
-    "Swablu": { "img": "pkm3/Swablu.png", "rarity": "epic", "chance": 15 },
-    "Altaria": { "img": "pkm3/Altaria.png", "rarity": "epic", "chance": 15 },
-
-    "Zangoose": { "img": "pkm3/Zangoose.png", "rarity": "epic", "chance": 15 },
-    "Seviper": { "img": "pkm3/Seviper.png", "rarity": "epic", "chance": 15 },
-
-    "Lunatone": { "img": "pkm3/Lunatone.png", "rarity": "epic", "chance": 15 },
-    "Solrock": { "img": "pkm3/Solrock.png", "rarity": "epic", "chance": 15 },
-
-    "Barboach": { "img": "pkm3/Barboach.png", "rarity": "rare", "chance": 30 },
-    "Whiscash": { "img": "pkm3/Whiscash.png", "rarity": "rare", "chance": 30 },
-
-    "Corphish": { "img": "pkm3/Corphish.png", "rarity": "rare", "chance": 30 },
+    "Torkoal": {
+      "img": "pkm3/Torkoal.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Spoink": {
+      "img": "pkm3/Spoink.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Grumpig": {
+      "img": "pkm3/Grumpig.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Spinda": {
+      "img": "pkm3/Spinda.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Trapinch": {
+      "img": "pkm3/Trapinch.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Vibrava": {
+      "img": "pkm3/Vibrava.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Flygon": {
+      "img": "pkm3/Flygon.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Cacnea": {
+      "img": "pkm3/Cacnea.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Cacturne": {
+      "img": "pkm3/Cacturne.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Swablu": {
+      "img": "pkm3/Swablu.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Altaria": {
+      "img": "pkm3/Altaria.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Zangoose": {
+      "img": "pkm3/Zangoose.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Seviper": {
+      "img": "pkm3/Seviper.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Lunatone": {
+      "img": "pkm3/Lunatone.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Solrock": {
+      "img": "pkm3/Solrock.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Barboach": {
+      "img": "pkm3/Barboach.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Whiscash": {
+      "img": "pkm3/Whiscash.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Corphish": {
+      "img": "pkm3/Corphish.png",
+      "rarity": "rare",
+      "chance": 30
+    },
     "Crawdaunt": {
       "img": "pkm3/Crawdaunt.png",
       "rarity": "rare",
       "chance": 30
     },
-
-    "Baltoy": { "img": "pkm3/Baltoy.png", "rarity": "common", "chance": 60 },
-    "Claydol": { "img": "pkm3/Claydol.png", "rarity": "common", "chance": 60 },
-
-    "Lileep": { "img": "pkm3/Lileep.png", "rarity": "common", "chance": 60 },
-    "Cradily": { "img": "pkm3/Cradily.png", "rarity": "common", "chance": 60 },
-
-    "Anorith": { "img": "pkm3/Anorith.png", "rarity": "common", "chance": 60 },
-    "Armaldo": { "img": "pkm3/Armaldo.png", "rarity": "common", "chance": 60 },
-
-    "Feebas": { "img": "pkm3/Feebas.png", "rarity": "epic", "chance": 15 },
-    "Milotic": { "img": "pkm3/Milotic.png", "rarity": "epic", "chance": 15 },
-
-    "Castform": { "img": "pkm3/Castform.png", "rarity": "rare", "chance": 30 },
+    "Baltoy": {
+      "img": "pkm3/Baltoy.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Claydol": {
+      "img": "pkm3/Claydol.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Lileep": {
+      "img": "pkm3/Lileep.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Cradily": {
+      "img": "pkm3/Cradily.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Anorith": {
+      "img": "pkm3/Anorith.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Armaldo": {
+      "img": "pkm3/Armaldo.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Feebas": {
+      "img": "pkm3/Feebas.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Milotic": {
+      "img": "pkm3/Milotic.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Castform": {
+      "img": "pkm3/Castform.png",
+      "rarity": "rare",
+      "chance": 30
+    },
     "Castform Sunny": {
       "img": "pkm3/CastformSunny.png",
       "rarity": "rare",
@@ -8628,77 +9125,161 @@
       "rarity": "rare",
       "chance": 30
     },
-
-    "Kecleon": { "img": "pkm3/Kecleon.png", "rarity": "rare", "chance": 30 },
-
-    "Shuppet": { "img": "pkm3/Shuppet.png", "rarity": "epic", "chance": 15 },
-    "Banette": { "img": "pkm3/Banette.png", "rarity": "epic", "chance": 15 },
-
-    "Duskull": { "img": "pkm3/Duskull.png", "rarity": "epic", "chance": 15 },
-    "Dusclops": { "img": "pkm3/Dusclops.png", "rarity": "epic", "chance": 15 },
-
-    "Tropius": { "img": "pkm3/Tropius.png", "rarity": "epic", "chance": 15 },
-    "Chimecho": { "img": "pkm3/Chimecho.png", "rarity": "epic", "chance": 15 },
-
-    "Absol": { "img": "pkm3/Absol.png", "rarity": "epic", "chance": 15 },
-    "Wynaut": { "img": "pkm3/Wynaut.png", "rarity": "epic", "chance": 15 },
-
-    "Snorunt": { "img": "pkm3/Snorunt.png", "rarity": "common", "chance": 60 },
-    "Glalie": { "img": "pkm3/Glalie.png", "rarity": "common", "chance": 60 },
-
-    "Spheal": { "img": "pkm3/Spheal.png", "rarity": "epic", "chance": 15 },
-    "Sealeo": { "img": "pkm3/Sealeo.png", "rarity": "epic", "chance": 15 },
-    "Walrein": { "img": "pkm3/Walrein.png", "rarity": "epic", "chance": 15 },
-
+    "Kecleon": {
+      "img": "pkm3/Kecleon.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Shuppet": {
+      "img": "pkm3/Shuppet.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Banette": {
+      "img": "pkm3/Banette.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Duskull": {
+      "img": "pkm3/Duskull.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Dusclops": {
+      "img": "pkm3/Dusclops.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Tropius": {
+      "img": "pkm3/Tropius.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Chimecho": {
+      "img": "pkm3/Chimecho.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Absol": {
+      "img": "pkm3/Absol.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Wynaut": {
+      "img": "pkm3/Wynaut.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Snorunt": {
+      "img": "pkm3/Snorunt.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Glalie": {
+      "img": "pkm3/Glalie.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Spheal": {
+      "img": "pkm3/Spheal.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Sealeo": {
+      "img": "pkm3/Sealeo.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Walrein": {
+      "img": "pkm3/Walrein.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Clamperl": {
       "img": "pkm3/Clamperl.png",
       "rarity": "common",
       "chance": 60
     },
-    "Huntail": { "img": "pkm3/Huntail.png", "rarity": "common", "chance": 60 },
+    "Huntail": {
+      "img": "pkm3/Huntail.png",
+      "rarity": "common",
+      "chance": 60
+    },
     "Gorebyss": {
       "img": "pkm3/Gorebyss.png",
       "rarity": "common",
       "chance": 60
     },
-
     "Relicanth": {
       "img": "pkm3/Relicanth.png",
       "rarity": "epic",
       "chance": 15
     },
-    "Luvdisc": { "img": "pkm3/Luvdisc.png", "rarity": "common", "chance": 60 },
-
-    "Bagon": { "img": "pkm3/Bagon.png", "rarity": "epic", "chance": 15 },
-    "Shelgon": { "img": "pkm3/Shelgon.png", "rarity": "epic", "chance": 15 },
+    "Luvdisc": {
+      "img": "pkm3/Luvdisc.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Bagon": {
+      "img": "pkm3/Bagon.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Shelgon": {
+      "img": "pkm3/Shelgon.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Salamence": {
       "img": "pkm3/Salamence.png",
       "rarity": "epic",
       "chance": 15
     },
-
-    "Beldum": { "img": "pkm3/Beldum.png", "rarity": "epic", "chance": 15 },
-    "Metang": { "img": "pkm3/Metang.png", "rarity": "epic", "chance": 15 },
+    "Beldum": {
+      "img": "pkm3/Beldum.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Metang": {
+      "img": "pkm3/Metang.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Metagross": {
       "img": "pkm3/Metagross.png",
       "rarity": "epic",
       "chance": 15
     },
-
     "Regirock": {
       "img": "pkm3/Regirock.png",
       "rarity": "legendary",
       "chance": 3
     },
-    "Regice": { "img": "pkm3/Regice.png", "rarity": "legendary", "chance": 3 },
+    "Regice": {
+      "img": "pkm3/Regice.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
     "Registeel": {
       "img": "pkm3/Registeel.png",
       "rarity": "legendary",
       "chance": 3
     },
-    "Latias": { "img": "pkm3/Latias.png", "rarity": "legendary", "chance": 3 },
-    "Latios": { "img": "pkm3/Latios.png", "rarity": "legendary", "chance": 3 },
-    "Kyogre": { "img": "pkm3/Kyogre.png", "rarity": "legendary", "chance": 3 },
+    "Latias": {
+      "img": "pkm3/Latias.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Latios": {
+      "img": "pkm3/Latios.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Kyogre": {
+      "img": "pkm3/Kyogre.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
     "Groudon": {
       "img": "pkm3/Groudon.png",
       "rarity": "legendary",
@@ -8714,8 +9295,11 @@
       "rarity": "legendary",
       "chance": 3
     },
-
-    "Deoxys": { "img": "pkm3/Deoxys.png", "rarity": "legendary", "chance": 3 },
+    "Deoxys": {
+      "img": "pkm3/Deoxys.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
     "Deoxys Attack": {
       "img": "pkm3/DeoxysAttack.png",
       "rarity": "legendary",
@@ -9652,19 +10236,16 @@
       "rarity": "legendary",
       "chance": 3
     },
-
     "Dee Dee": {
       "img": "labdexter/DeeDee.png",
       "rarity": "epic",
       "chance": 15
     },
-
     "Cerebro": {
       "img": "labdexter/Cerebro.png",
       "rarity": "rare",
       "chance": 30
     },
-
     "Mamá": {
       "img": "labdexter/Mama.png",
       "rarity": "common",
@@ -9697,7 +10278,6 @@
       "rarity": "legendary",
       "chance": 3
     },
-
     "Fredo Godofredo": {
       "img": "billymandy/FredoGodofredo.png",
       "rarity": "epic",
@@ -9713,7 +10293,6 @@
       "rarity": "epic",
       "chance": 15
     },
-
     "Gladys": {
       "img": "billymandy/Gladys.png",
       "rarity": "rare",
@@ -9734,7 +10313,6 @@
       "rarity": "rare",
       "chance": 30
     },
-
     "Pecas": {
       "img": "billymandy/Pecas.png",
       "rarity": "common",
@@ -9762,7 +10340,6 @@
       "rarity": "legendary",
       "chance": 3
     },
-
     "Abuela Cerdita": {
       "img": "peppa/AbuelaCerdita.png",
       "rarity": "epic",
@@ -9783,7 +10360,6 @@
       "rarity": "epic",
       "chance": 15
     },
-
     "Candy Gata": {
       "img": "peppa/CandyGata.png",
       "rarity": "rare",
@@ -9819,7 +10395,6 @@
       "rarity": "rare",
       "chance": 30
     },
-
     "Emily Elefante": {
       "img": "peppa/EmilyElefante.png",
       "rarity": "common",
