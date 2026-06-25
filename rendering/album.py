@@ -60,6 +60,11 @@ def build_collection_page_image(
         else:
             img = apply_rarity_fx(img, RARITY_STYLES.get(rarity, RARITY_STYLES["common"]))
 
+        # recortar esquinas redondeadas para que no sobresalgan del marco
+        corner_mask = Image.new("L", (card_w, card_h), 0)
+        ImageDraw.Draw(corner_mask).rounded_rectangle([0, 0, card_w - 1, card_h - 1], radius=18, fill=255)
+        img.putalpha(corner_mask)
+
         if not owned:
             img = img.convert("L").convert("RGBA")
             img = ImageEnhance.Brightness(img).enhance(0.35)
