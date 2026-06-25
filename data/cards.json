@@ -150,6 +150,11 @@
       "rarity": "epic",
       "chance": 15
     },
+    "Sabrina Carpenter": {
+      "img": "artistasf/SabrinaCarpenter.png",
+      "rarity": "epic",
+      "chance": 15
+    },
     "Selena Gómez": {
       "img": "artistasf/SelenaGomez.png",
       "rarity": "epic",
@@ -212,6 +217,11 @@
     },
     "Jessie J": {
       "img": "artistasf/JessieJ.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Ke$ha": {
+      "img": "artistasf/Kesha.png",
       "rarity": "rare",
       "chance": 30
     },
