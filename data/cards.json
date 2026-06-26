@@ -10425,5 +10425,1038 @@
       "rarity": "common",
       "chance": 60
     }
+  },
+  "Coffee Talk": {
+    "Ayame": {
+      "img": "coffeetalk/Ayame.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Freya Fatima": {
+      "img": "coffeetalk/FreyaFatima.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Neil": {
+      "img": "coffeetalk/Neil.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Riona Sheerin": {
+      "img": "coffeetalk/RionaSheerin.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Silver": {
+      "img": "coffeetalk/Silver.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Aqua": {
+      "img": "coffeetalk/Aqua.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Fuku": {
+      "img": "coffeetalk/Fuku.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Hyde": {
+      "img": "coffeetalk/Hyde.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Jun": {
+      "img": "coffeetalk/Jun.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Lucas": {
+      "img": "coffeetalk/Lucas.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Myrtle": {
+      "img": "coffeetalk/Myrtle.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Rachel Florencia": {
+      "img": "coffeetalk/RachelFlorencia.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Tofu": {
+      "img": "coffeetalk/Tofu.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Vin": {
+      "img": "coffeetalk/Vin.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Amanda": {
+      "img": "coffeetalk/Amanda.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Ash": {
+      "img": "coffeetalk/Ash.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Baileys": {
+      "img": "coffeetalk/Baileys.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Blue": {
+      "img": "coffeetalk/Blue.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Fahmi": {
+      "img": "coffeetalk/Fahmi.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Gala": {
+      "img": "coffeetalk/Gala.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Jorji Williams": {
+      "img": "coffeetalk/JorjiWilliams.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Lua Miller": {
+      "img": "coffeetalk/LuaMiller.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Yuki": {
+      "img": "coffeetalk/Yuki.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Agente": {
+      "img": "coffeetalk/Agente.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Akiko": {
+      "img": "coffeetalk/Akiko.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Dooley": {
+      "img": "coffeetalk/Dooley.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Emi": {
+      "img": "coffeetalk/Emi.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Erika": {
+      "img": "coffeetalk/Erika.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Hendry": {
+      "img": "coffeetalk/Hendry.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Kenji": {
+      "img": "coffeetalk/Kenji.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Makoto": {
+      "img": "coffeetalk/Makoto.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "McQueen": {
+      "img": "coffeetalk/McQueen.png",
+      "rarity": "common",
+      "chance": 60
+    }
+  },
+  "Among Us": {
+    "Morado": {
+      "img": "amongus/Morado.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Rojo": {
+      "img": "amongus/Rojo.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Verde": {
+      "img": "amongus/Verde.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Amarillo": {
+      "img": "amongus/Amarillo.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Azul": {
+      "img": "amongus/Azul.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Marrón": {
+      "img": "amongus/Marron.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Negro": {
+      "img": "amongus/Negro.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Banana": {
+      "img": "amongus/Banana.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Blanco": {
+      "img": "amongus/Blanco.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Cian": {
+      "img": "amongus/Cian.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Lima": {
+      "img": "amongus/Lima.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Naranja": {
+      "img": "amongus/Naranja.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Rosa": {
+      "img": "amongus/Rosa.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Caqui": {
+      "img": "amongus/Caqui.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Coral": {
+      "img": "amongus/Coral.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Granate": {
+      "img": "amongus/Granate.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Gris": {
+      "img": "amongus/Gris.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Rosita": {
+      "img": "amongus/Rosita.png",
+      "rarity": "common",
+      "chance": 60
+    }
+  },
+  "Epic Seven": {
+    "Amid": {
+      "img": "epicseven/Amid.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Dueña de la Balanza": {
+      "img": "epicseven/DuenadelaBalanza.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Harsetti": {
+      "img": "epicseven/Harsetti.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Hécate": {
+      "img": "epicseven/Hecate.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Notos": {
+      "img": "epicseven/Notos.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Ras de la Génesis": {
+      "img": "epicseven/RasdelaGenesis.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Rhianna Luciella": {
+      "img": "epicseven/RhiannaLuciella.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Rinak": {
+      "img": "epicseven/Rinak.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Setsuka": {
+      "img": "epicseven/Setsuka.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Tenebria": {
+      "img": "epicseven/Tenebria.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Aki": {
+      "img": "epicseven/Aki.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Aram": {
+      "img": "epicseven/Aram.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Belian": {
+      "img": "epicseven/Belian.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Cerise": {
+      "img": "epicseven/Cerise.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Coli Modelo Táctico": {
+      "img": "epicseven/ColiModeloTactico.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Corvus Oscuro": {
+      "img": "epicseven/CorvusOscuro.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Diene": {
+      "img": "epicseven/Diene.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Estelle": {
+      "img": "epicseven/Estelle.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Feira": {
+      "img": "epicseven/Feira.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Fenne": {
+      "img": "epicseven/Fenne.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Frida": {
+      "img": "epicseven/Frida.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Fumyr": {
+      "img": "epicseven/Fumyr.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Haste": {
+      "img": "epicseven/Haste.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Iseria": {
+      "img": "epicseven/Iseria.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Krau": {
+      "img": "epicseven/Krau.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Laia": {
+      "img": "epicseven/Laia.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Lidica": {
+      "img": "epicseven/Lidica.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Luna": {
+      "img": "epicseven/Luna.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Mort": {
+      "img": "epicseven/Mort.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Pavel": {
+      "img": "epicseven/Pavel.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Politis": {
+      "img": "epicseven/Politis.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Salomé": {
+      "img": "epicseven/Salome.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Saria": {
+      "img": "epicseven/Saria.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Senya": {
+      "img": "epicseven/Senya.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Solitaria de la Nieve": {
+      "img": "epicseven/SolitariadelaNieve.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Taeyu": {
+      "img": "epicseven/Taeyu.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Tamarinne": {
+      "img": "epicseven/Tamarinne.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Tori": {
+      "img": "epicseven/Tori.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Yulha": {
+      "img": "epicseven/Yulha.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Zio": {
+      "img": "epicseven/Zio.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Abigail": {
+      "img": "epicseven/Abigail.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Aria": {
+      "img": "epicseven/Aria.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Arunka": {
+      "img": "epicseven/Arunka.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Brieg": {
+      "img": "epicseven/Brieg.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Byblis": {
+      "img": "epicseven/Byblis.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Cecilia": {
+      "img": "epicseven/Cecilia.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Celine": {
+      "img": "epicseven/Celine.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Cermia": {
+      "img": "epicseven/Cermia.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Charlotte": {
+      "img": "epicseven/Charlotte.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Chloe": {
+      "img": "epicseven/Chloe.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Destina": {
+      "img": "epicseven/Destina.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Eda": {
+      "img": "epicseven/Eda.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Eligos": {
+      "img": "epicseven/Eligos.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Elvira": {
+      "img": "epicseven/Elvira.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Fenris": {
+      "img": "epicseven/Fenris.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Flan": {
+      "img": "epicseven/Flan.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Hwa Young": {
+      "img": "epicseven/HwaYoung.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Ilynav": {
+      "img": "epicseven/Ilynav.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Kise": {
+      "img": "epicseven/Kise.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Lethe": {
+      "img": "epicseven/Lethe.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Luisa": {
+      "img": "epicseven/Luisa.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Luluca": {
+      "img": "epicseven/Luluca.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Melissa": {
+      "img": "epicseven/Melissa.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Modelo Bombardero Kanna": {
+      "img": "epicseven/ModeloBombarderoKanna.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Modelo de Comando Laika": {
+      "img": "epicseven/ModelodeComandoLaika.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Ray": {
+      "img": "epicseven/Ray.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Robin": {
+      "img": "epicseven/Robin.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Schniel": {
+      "img": "epicseven/Schniel.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Sharun": {
+      "img": "epicseven/Sharun.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Shuna": {
+      "img": "epicseven/Shuna.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Tywin": {
+      "img": "epicseven/Tywin.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Vildred": {
+      "img": "epicseven/Vildred.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Violet": {
+      "img": "epicseven/Violet.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Vivian": {
+      "img": "epicseven/Vivian.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Wukong Inmortal": {
+      "img": "epicseven/WukongInmortal.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Yufine": {
+      "img": "epicseven/Yufine.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Yuna": {
+      "img": "epicseven/Yuna.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Alencia": {
+      "img": "epicseven/Alencia.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Aramintha": {
+      "img": "epicseven/Aramintha.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Baal y Sezan": {
+      "img": "epicseven/BaalySezan.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Basar": {
+      "img": "epicseven/Basar.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Bellona": {
+      "img": "epicseven/Bellona.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Bihu": {
+      "img": "epicseven/Bihu.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Birgitta": {
+      "img": "epicseven/Birgitta.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Charles": {
+      "img": "epicseven/Charles.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Choux": {
+      "img": "epicseven/Choux.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Elena": {
+      "img": "epicseven/Elena.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Ervalen": {
+      "img": "epicseven/Ervalen.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Ivana": {
+      "img": "epicseven/Ivana.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Jenua": {
+      "img": "epicseven/Jenua.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Kane": {
+      "img": "epicseven/Kane.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Kawerik": {
+      "img": "epicseven/Kawerik.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Kayron": {
+      "img": "epicseven/Kayron.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Ken": {
+      "img": "epicseven/Ken.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Landy": {
+      "img": "epicseven/Landy.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Lilias": {
+      "img": "epicseven/Lilias.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Lilibet": {
+      "img": "epicseven/Lilibet.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Lua": {
+      "img": "epicseven/Lua.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Ludwig": {
+      "img": "epicseven/Ludwig.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Mui": {
+      "img": "epicseven/Mui.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Nahkwol": {
+      "img": "epicseven/Nahkwol.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Ran": {
+      "img": "epicseven/Ran.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Ravi": {
+      "img": "epicseven/Ravi.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Roana": {
+      "img": "epicseven/Roana.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Sez": {
+      "img": "epicseven/Sez.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Sigret": {
+      "img": "epicseven/Sigret.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Zahak": {
+      "img": "epicseven/Zahak.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Zeno": {
+      "img": "epicseven/Zeno.png",
+      "rarity": "rare",
+      "chance": 30
+    }
+  },
+  "Super Mario": {
+    "Bowser": {
+      "img": "supermario/Bowser.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Daisy": {
+      "img": "supermario/Daisy.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Luigi": {
+      "img": "supermario/Luigi.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Mario": {
+      "img": "supermario/Mario.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Peach": {
+      "img": "supermario/Peach.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Rosalina": {
+      "img": "supermario/Rosalina.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Toad": {
+      "img": "supermario/Toad.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Toadette": {
+      "img": "supermario/Toadette.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Yoshi": {
+      "img": "supermario/Yoshi.png",
+      "rarity": "legendary",
+      "chance": 3
+    },
+    "Bowsitos": {
+      "img": "supermario/Bowsitos.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Donkey Kong": {
+      "img": "supermario/DonkeyKong.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Goomba": {
+      "img": "supermario/Goomba.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Kamek": {
+      "img": "supermario/Kamek.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Lakitu": {
+      "img": "supermario/Lakitu.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Pauline": {
+      "img": "supermario/Pauline.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Peachette": {
+      "img": "supermario/Peachette.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Rey Bob-omb": {
+      "img": "supermario/ReyBobomb.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Rey Boo": {
+      "img": "supermario/ReyBoo.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Waluigi": {
+      "img": "supermario/Waluigi.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Wario": {
+      "img": "supermario/Wario.png",
+      "rarity": "epic",
+      "chance": 15
+    },
+    "Birdo": {
+      "img": "supermario/Birdo.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Boo": {
+      "img": "supermario/Boo.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Bowser Jr.": {
+      "img": "supermario/BowserJr.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Diddy Kong": {
+      "img": "supermario/DiddyKong.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Dixie Kong": {
+      "img": "supermario/DixieKong.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Funky Kong": {
+      "img": "supermario/FunkyKong.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Hermano Martillo": {
+      "img": "supermario/HermanoMartillo.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Koopa Troopa": {
+      "img": "supermario/KoopaTroopa.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Ludwig": {
+      "img": "supermario/Ludwig.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Pepito Piraña": {
+      "img": "supermario/PepitoPirana.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Shy Guy": {
+      "img": "supermario/ShyGuy.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Topo Monty": {
+      "img": "supermario/TopoMonty.png",
+      "rarity": "rare",
+      "chance": 30
+    },
+    "Bebé Daisy": {
+      "img": "supermario/BebeDaisy.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Bebé Luigi": {
+      "img": "supermario/BebeLuigi.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Bebé Mario": {
+      "img": "supermario/BebeMario.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Bebé Peach": {
+      "img": "supermario/BebePeach.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Bebé Rosalina": {
+      "img": "supermario/BebeRosalina.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Caco Gazapo": {
+      "img": "supermario/CacoGazapo.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Floruga": {
+      "img": "supermario/Floruga.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Huesitos": {
+      "img": "supermario/Huesitos.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Iggy": {
+      "img": "supermario/Iggy.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Larry": {
+      "img": "supermario/Larry.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Lemmy": {
+      "img": "supermario/Lemmy.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Morton": {
+      "img": "supermario/Morton.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Poochy": {
+      "img": "supermario/Poochy.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Roy": {
+      "img": "supermario/Roy.png",
+      "rarity": "common",
+      "chance": 60
+    },
+    "Wendy": {
+      "img": "supermario/Wendy.png",
+      "rarity": "common",
+      "chance": 60
+    }
   }
 }

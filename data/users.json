@@ -1,10 +1,22 @@
 {
     "1048304294492905576": {
-        "cards": [],
+        "cards": [
+            {
+                "collection": "Pokémon G1",
+                "name": "Poliwhirl",
+                "code": "ucelvd",
+                "value": 1047,
+                "rarity": "rare",
+                "frame_id": null,
+                "token_code": null,
+                "token_img": null,
+                "gen": 3106
+            }
+        ],
         "last_pull": 0,
-        "last_drop": 0,
-        "last_drop_take": 0,
-        "gold": 10,
+        "last_drop": 1782452244.8832293,
+        "last_drop_take": 1782452281.6404119,
+        "gold": 20,
         "last_daily": 0,
         "last_work": 0,
         "wishlist": [],
@@ -20,20 +32,20 @@
         },
         "cat_game": {},
         "achievements": [],
-        "msg_count": 7,
-        "last_msg_date": "2026-06-25",
-        "streak": 1,
+        "msg_count": 21,
+        "last_msg_date": "2026-06-26",
+        "streak": 2,
         "reactions_received": 0,
         "voice_seconds": 0,
         "voice_week": {},
         "screen_shared": false,
         "max_voice_with": 0,
         "missions": {
-            "date": "2026-06-25",
-            "msg": 7,
+            "date": "2026-06-26",
+            "msg": 8,
             "voice_seconds": 0,
-            "drops": 0,
-            "claims": 0,
+            "drops": 2,
+            "claims": 1,
             "sells": 0,
             "rewarded": [
                 "msg_5"
