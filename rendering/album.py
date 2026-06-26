@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageEnhance
 
 from config import BASE_DIR, RARITY_STYLES
 from core.cards import rarity_es_upper
-from rendering.fonts import get_bold_font, draw_centered_text_with_outline
+from rendering.fonts import get_bold_font, draw_centered_text_with_outline, fit_font_to_width
 from rendering.fx import apply_rarity_fx, apply_holo_fx, safe_open_image, rarity_panel_color
 
 
@@ -40,7 +40,6 @@ def build_collection_page_image(
 
     album = Image.new("RGBA", (columns * card_w, rows * cell_h), (20, 20, 20, 255))
     draw  = ImageDraw.Draw(album)
-    font_name   = get_bold_font(24)
     font_rarity = get_bold_font(20)
 
     for i, (name, data) in enumerate(chunk):
@@ -109,6 +108,7 @@ def build_collection_page_image(
             fill_rar  = (0,   0,   0, 255)   if owned else (190, 190, 190, 255)
 
         center = x + card_w // 2
+        font_name = fit_font_to_width(draw, str(name), card_w - 20, 24, min_size=11)
         draw_centered_text_with_outline(draw, str(name),               center, y + card_h + 16, font_name,   fill_name, stroke=2)
         draw_centered_text_with_outline(draw, rarity_es_upper(rarity), center, y + card_h + 56, font_rarity, fill_rar,
                                         outline=(255, 255, 255, 255) if not is_holo_card else (80, 0, 120, 255), stroke=2)
