@@ -7,7 +7,7 @@ from PIL import Image, ImageChops, ImageDraw, ImageFilter
 from config import BASE_DIR, CARD_SIZE, FRAME_SIZE, RARITY_STYLES
 from rendering.fonts import get_bold_font
 
-HOLO_GEN_THRESHOLD = 30
+HOLO_GEN_THRESHOLD = 5000
 
 
 def safe_open_image(path: str, size: Tuple[int, int] = CARD_SIZE) -> Image.Image:
