@@ -13,7 +13,7 @@ from core.storage import get_paths, load_json
 from core.tokens import gen_unique_token_code, all_existing_token_codes, load_tokens_db
 from core.users import ensure_user, human_time, save_users
 from rendering.cards import pil_to_discord_file
-from rendering.pack import create_pack_image, create_drop_image, create_single_drop_card
+from rendering.pack import create_drop_image, create_single_drop_card
 from views.drop import MultiDropView, RARITY_EMOJI
 
 import random
@@ -73,7 +73,7 @@ class GachaCog(commands.Cog):
             await ctx.reply("No hay cartas en el pool activo.")
             return
 
-        pulled = pick_unique(pool, weights, k=5)
+        pulled = pick_unique(pool, weights, k=3)
         if not pulled:
             await ctx.reply("No se pudieron obtener cartas únicas.")
             return
@@ -86,6 +86,8 @@ class GachaCog(commands.Cog):
             col  = meta["collection"]
             name = meta["name"]
             inst = create_card_instance_from_meta(col, name, cards_db, users)
+            gen  = random.randint(1, 9999)
+            inst["gen"] = gen
             is_token = random.random() < TOKEN_DROP_CHANCE
 
             if is_token:
@@ -99,16 +101,16 @@ class GachaCog(commands.Cog):
                     users[uid].setdefault("tokens", []).append(tok_inst)
                     inst["token_code"] = tok_code
                     inst["token_img"]  = tok_img
-                    pack_data.append({**meta, "img": tok_img, "value": inst["value"], "is_token": True})
+                    pack_data.append({**meta, "img": tok_img, "is_token": True, "display_code": f"G·{gen}"})
                     continue
 
             users[uid].setdefault("cards", []).append(inst)
-            pack_data.append({**meta, "value": inst["value"]})
+            pack_data.append({**meta, "display_code": f"G·{gen}"})
 
         users[uid]["last_gacha"] = now
         save_users(users)
 
-        img = create_pack_image(pack_data[:5])
+        img = create_drop_image(pack_data)
         f   = pil_to_discord_file(img, "gacha.png")
         e   = discord.Embed(
             title=f"🎴 {ctx.author.display_name} abrió el gacha",
