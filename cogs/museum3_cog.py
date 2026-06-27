@@ -5,7 +5,7 @@ from discord.ext import commands
 
 from config import MUSEUM_BACKGROUNDS
 from core.cards import find_instance_by_code, migrate_users_cards, normalize_cards
-from core.museum_bgs import get_user_owned_bgs, load_museum_bg_catalog
+from core.museum_bgs import get_user_owned_bgs_for_museum, load_museum_bg_catalog
 from core.storage import get_paths, load_json
 from core.users import ensure_user, pick_target_member, save_users
 from rendering.cards import pil_to_discord_file
@@ -104,7 +104,7 @@ class Museum3Cog(commands.Cog):
             title=f"🏛️ Museo III de {target.display_name}",
             color=0x2c3e50,
         ).set_image(url="attachment://museo3.png")
-        owned_bgs = get_user_owned_bgs(users, str(ctx.author.id))
+        owned_bgs = get_user_owned_bgs_for_museum(users, str(ctx.author.id), 3)
         view = Museum3View(ctx.author.id, owned_bgs) if target.id == ctx.author.id else None
         await ctx.reply(embed=e, file=f, view=view)
 

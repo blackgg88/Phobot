@@ -370,8 +370,10 @@ class MuseumBgShopView(discord.ui.View):
         owned_strs = [str(o) for o in self.owned]
         lines = []
         for bg_id, meta in self.catalog.items():
-            tick = "✅" if str(bg_id) in owned_strs else "⬜"
-            lines.append(f"{tick} **{meta['name']}** — {meta['price']} oro")
+            tick       = "✅" if str(bg_id) in owned_strs else "⬜"
+            museo_num  = meta.get("museum", 1)
+            museo_tag  = f"Museo {'I' * museo_num}" if museo_num <= 3 else f"Museo {museo_num}"
+            lines.append(f"{tick} **{meta['name']}** — {meta['price']} oro *(para {museo_tag})*")
         return discord.Embed(
             title="🏛️ Fondos de museo",
             description=f"💰 Oro: **{self.gold}**\n\n" + "\n".join(lines),

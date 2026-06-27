@@ -3,6 +3,7 @@
     "name": "Sanic",
     "price": 20,
     "img": "museum_bgs/sonic.png",
-    "shop": true
+    "shop": true,
+    "museum": 1
   }
 }
