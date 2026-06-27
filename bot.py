@@ -18,6 +18,7 @@ COGS = [
     "cogs.casino_cog",
     "cogs.museum_cog",
     "cogs.museum2_cog",
+    "cogs.museum3_cog",
     "cogs.inventory_cog",
     "cogs.buy_cog",
     "cogs.trade_cog",
