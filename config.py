@@ -4,7 +4,7 @@ import string
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ── Cooldowns ──────────────────────────────────────────────
-COOLDOWN          = 8 * 60 * 60   # pgacha:  8 h
+COOLDOWN          = 0              # pgacha:  pruebas (restaurar a 8 * 60 * 60)
 DAILY_COOLDOWN    = 24 * 60 * 60  # pdaily: 24 h
 WORK_COOLDOWN     = 30 * 60       # pwork:  30 m
 DROP_COOLDOWN     = 8 * 60        # pdrop:   8 min

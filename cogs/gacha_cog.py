@@ -81,8 +81,9 @@ class GachaCog(commands.Cog):
         tokens_db = load_tokens_db()
         existing_tokens = all_existing_token_codes(users)
 
-        pack_data = []
-        for meta in pulled:
+        pack_data  = []
+        card_lines = []
+        for idx, meta in enumerate(pulled, 1):
             col  = meta["collection"]
             name = meta["name"]
             inst = create_card_instance_from_meta(col, name, cards_db, users)
@@ -102,10 +103,12 @@ class GachaCog(commands.Cog):
                     inst["token_code"] = tok_code
                     inst["token_img"]  = tok_img
                     pack_data.append({**meta, "img": tok_img, "is_token": True, "display_code": f"G·{gen}"})
+                    card_lines.append(f"{idx}. G·{gen} | {name} • {col} | `{inst['code']}`")
                     continue
 
             users[uid].setdefault("cards", []).append(inst)
             pack_data.append({**meta, "display_code": f"G·{gen}"})
+            card_lines.append(f"{idx}. G·{gen} | {name} • {col} | `{inst['code']}`")
 
         users[uid]["last_gacha"] = now
         save_users(users)
@@ -113,10 +116,10 @@ class GachaCog(commands.Cog):
         img = create_drop_image(pack_data)
         f   = pil_to_discord_file(img, "gacha.png")
         e   = discord.Embed(
-            title=f"🎴 {ctx.author.display_name} abrió el gacha",
+            description="\n".join(card_lines),
             color=0x9b59b6,
         ).set_image(url="attachment://gacha.png")
-        await ctx.reply(embed=e, file=f)
+        await ctx.reply(content=ctx.author.mention, embed=e, file=f)
         await notify_wishlist(self.bot, ctx.channel, pack_data, users)
 
     @commands.command(name="pdrop")
