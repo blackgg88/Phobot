@@ -62,10 +62,13 @@ class CardsListView(discord.ui.View):
         self.page    = max(0, min(self.page, total_pages - 1))
 
         chunk = sorted_cards[self.page * self.per_page : (self.page + 1) * self.per_page]
-        lines = [
-            f"`{c.get('code')}` — **{c.get('name')}** (*{c.get('collection')}*) — **P{int(c.get('value', 0))}** — {rarity_es(c.get('rarity'))}"
-            for c in chunk
-        ]
+        lines = []
+        for c in chunk:
+            gen = c.get("gen")
+            gen_tag = f"G·{gen}" if gen is not None else "G·???"
+            lines.append(
+                f"`{c.get('code')}` — **{c.get('name')}** (*{c.get('collection')}*) — **{gen_tag}** — {rarity_es(c.get('rarity'))}"
+            )
         mode_map = {"order": "obtención", "alpha": "A-Z", "series": "serie", "value": "valor"}
         e = discord.Embed(
             title="🗂️ Tus cartas (instancias)",
