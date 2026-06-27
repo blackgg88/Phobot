@@ -1,17 +1,17 @@
 from __future__ import annotations
 
-import os
 from io import BytesIO
 from typing import List, Optional, Tuple
 
 from PIL import Image, ImageDraw
 
-from config import BASE_DIR, RARITY_STYLES
 from core.achievements import ACH_BY_ID
 from rendering.fonts import (
     get_bold_font, draw_centered_text_with_outline, fit_font_to_width,
 )
-from rendering.fx import safe_open_image, apply_rarity_fx
+from core.levels import xp_progress
+from rendering.cards import render_single_card_image
+from rendering.fx import safe_open_image
 
 # ── Paleta base ────────────────────────────────────────────
 WHITE = (255, 255, 255, 255)
@@ -79,43 +79,27 @@ def _panel(draw: ImageDraw.ImageDraw, x1, y1, x2, y2, radius=12, fill=(32, 32, 3
 
 
 def _render_card_slot(
-    card: Optional[dict], slot_w: int, slot_h: int, bg_color=(22, 22, 22, 255)
+    cards_db: dict, card: Optional[dict], slot_w: int, slot_h: int,
+    bg_color=(22, 22, 22, 255), corner_radius: int = 10,
 ) -> Image.Image:
     slot = Image.new("RGBA", (slot_w, slot_h), bg_color)
     if not card or not card.get("img"):
+        # máscara redondeada al slot vacío también
+        mask = Image.new("L", (slot_w, slot_h), 0)
+        ImageDraw.Draw(mask).rounded_rectangle([0, 0, slot_w - 1, slot_h - 1], radius=corner_radius, fill=255)
+        slot.putalpha(mask)
         return slot
 
-    rarity = (card.get("rarity") or "common").lower()
-    path   = card["img"]
-    full   = os.path.join(BASE_DIR, "images", path)
-
+    # renderizar con todos los efectos (holo, marco, rareza) — igual que !pver
     try:
-        card_img = safe_open_image(full, size=(slot_w, slot_h)).resize((slot_w, slot_h))
+        card_img = render_single_card_image(cards_db, card).resize((slot_w, slot_h), Image.LANCZOS)
     except Exception:
         return slot
 
-    card_img = apply_rarity_fx(card_img, RARITY_STYLES.get(rarity, RARITY_STYLES["common"]))
-
-    # degradé inferior
-    r, g, b, _ = RARITY_STYLES.get(rarity, RARITY_STYLES["common"])
-    gh      = int(slot_h * 0.40)
-    overlay = Image.new("RGBA", (slot_w, slot_h), (0, 0, 0, 0))
-    od      = ImageDraw.Draw(overlay)
-    for y in range(gh):
-        t     = y / max(gh - 1, 1)
-        alpha = int(215 * (t ** 1.8))
-        od.line([(0, slot_h - gh + y), (slot_w - 1, slot_h - gh + y)], fill=(r, g, b, alpha))
-    card_img = Image.alpha_composite(card_img, overlay)
-
-    cd  = ImageDraw.Draw(card_img)
-    cx  = slot_w // 2
-    mw  = slot_w - 16
-    name  = str(card.get("name", "")).upper()
-    coll  = str(card.get("collection", "")).upper()
-    fn = fit_font_to_width(cd, name, mw, 20, min_size=10)
-    fs = fit_font_to_width(cd, coll, mw, 14, min_size=9)
-    draw_centered_text_with_outline(cd, name, cx, slot_h - 62, fn, WHITE, stroke=2)
-    draw_centered_text_with_outline(cd, coll, cx, slot_h - 34, fs, GRAY,  stroke=1)
+    # máscara redondeada para que las esquinas no sobresalgan
+    mask = Image.new("L", (slot_w, slot_h), 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, slot_w - 1, slot_h - 1], radius=corner_radius, fill=255)
+    card_img.putalpha(mask)
 
     slot.paste(card_img, (0, 0), card_img)
     return slot
@@ -125,6 +109,7 @@ def _render_card_slot(
 
 def render_profile_image(
     *,
+    cards_db: dict,
     avatar_bytes: Optional[bytes],
     display_name: str,
     birthday: str,
@@ -136,6 +121,7 @@ def render_profile_image(
     season_key: str,
     date_str: str,
     time_str: str,
+    xp: int = 0,
     theme: str = "negro",
 ) -> Image.Image:
     BG, PANEL, PANEL2 = _theme(theme)
@@ -163,7 +149,7 @@ def render_profile_image(
     panel(252, 113, 460, 173)
     fl = get_bold_font(13)
     fv = get_bold_font(26)
-    draw.text((265, 117), "CUMPLEANOS", font=fl, fill=GRAY)
+    draw.text((265, 117), "CUMPLEAÑOS", font=fl, fill=GRAY)
     draw_centered_text_with_outline(draw, birthday or "—", (252 + 460) // 2, 138, fv, WHITE, stroke=1)
 
     # ── Edad (4) ───────────────────────────────────────
@@ -173,12 +159,43 @@ def render_profile_image(
 
     # ── Logros (5) ─────────────────────────────────────
     panel(692, 22, 930, 245)
-    fb  = get_bold_font(68)
-    fs2 = get_bold_font(14)
-    acx = (692 + 930) // 2
-    draw_centered_text_with_outline(draw, str(achievements_done), acx, 55, fb, WHITE, stroke=2)
-    for line_i, line in enumerate(["de", f"{achievements_total}", "logros"]):
-        draw.text((705, 172 + line_i * 22), line, font=fs2, fill=GRAY)
+    acx  = (692 + 930) // 2
+    fl2  = get_bold_font(15)
+    fb   = get_bold_font(62)
+    fs2  = get_bold_font(18)
+    draw_centered_text_with_outline(draw, "LOGROS", acx, 32, fl2, GRAY, stroke=0)
+    draw_centered_text_with_outline(draw, str(achievements_done), acx, 80, fb, WHITE, stroke=2)
+    draw_centered_text_with_outline(draw, f"de {achievements_total}", acx, 180, fs2, GRAY, stroke=0)
+
+    # ── Barra de XP / nivel ────────────────────────────
+    xp_level, xp_cur, xp_needed = xp_progress(xp)
+    bar_x1, bar_y1, bar_x2, bar_y2 = 252, 185, 676, 245
+    panel(bar_x1, bar_y1, bar_x2, bar_y2, radius=12)
+
+    fl3      = get_bold_font(13)
+    bar_pad  = 16
+    bar_h    = 18
+    bar_iy   = bar_y2 - bar_pad - bar_h
+    bar_ix1  = bar_x1 + bar_pad
+    bar_ix2  = bar_x2 - bar_pad
+    bar_iw   = bar_ix2 - bar_ix1
+
+    # etiqueta nivel izquierda y XP derecha
+    draw.text((bar_x1 + bar_pad, bar_y1 + 10), f"NIVEL {xp_level}", font=fl3, fill=GRAY)
+    xp_label = f"{xp_cur} / {xp_needed} XP"
+    bbox = draw.textbbox((0, 0), xp_label, font=fl3)
+    draw.text((bar_ix2 - (bbox[2] - bbox[0]), bar_y1 + 10), xp_label, font=fl3, fill=GRAY)
+
+    # fondo de la barra
+    draw.rounded_rectangle([bar_ix1, bar_iy, bar_ix2, bar_iy + bar_h], radius=bar_h // 2, fill=(50, 50, 50, 255))
+    # relleno verde proporcional
+    fill_w = int(bar_iw * min(xp_cur / max(xp_needed, 1), 1.0))
+    if fill_w > 0:
+        draw.rounded_rectangle(
+            [bar_ix1, bar_iy, bar_ix1 + fill_w, bar_iy + bar_h],
+            radius=bar_h // 2,
+            fill=(60, 200, 80, 255),
+        )
 
     # ── Títulos destacados (6) — 2 filas × 2 columnas ──
     title_rects = [
@@ -210,10 +227,10 @@ def render_profile_image(
         cy = cy_start
         panel(cx, cy, cx + cw, cy + ch, radius=10, fill=PANEL2)
         card = featured_cards[i] if i < len(featured_cards) else None
-        slot = _render_card_slot(card, cw, ch, bg_color=PANEL2)
+        slot = _render_card_slot(cards_db, card, cw, ch, bg_color=PANEL2, corner_radius=10)
         img.paste(slot, (cx, cy), slot)
 
-    # ── Franja inferior: estación (8), fecha (9), hora (10) ──
+    # ── Franja inferior: estación bajo carta 1, fecha bajo carta 2, hora bajo carta 3 ──
     by = cy_start + ch + 14
     sname, scolor = SEASON_INFO.get(season_key, ("?", WHITE))
     semoji = SEASON_EMOJI.get(season_key, "")
@@ -221,15 +238,12 @@ def render_profile_image(
     fs3 = get_bold_font(17)
     fs4 = get_bold_font(14)
 
-    # estación centrada bajo carta 2
-    s2cx = cx_start + cw + cgap + cw // 2
-    draw_centered_text_with_outline(
-        draw, f"{semoji} {sname}", s2cx, by, fs3, scolor, stroke=1
-    )
+    cx1 = cx_start + cw // 2
+    cx2 = cx_start + cw + cgap + cw // 2
+    cx3 = cx_start + 2 * (cw + cgap) + cw // 2
 
-    # fecha y hora bajo carta 3
-    s3cx = cx_start + 2 * (cw + cgap) + cw // 2
-    draw_centered_text_with_outline(draw, date_str, s3cx, by,      fs4, GRAY, stroke=0)
-    draw_centered_text_with_outline(draw, time_str, s3cx, by + 22, fs4, GRAY, stroke=0)
+    draw_centered_text_with_outline(draw, f"{semoji} {sname}", cx1, by, fs3, scolor, stroke=1)
+    draw_centered_text_with_outline(draw, date_str,            cx2, by, fs4, GRAY,   stroke=0)
+    draw_centered_text_with_outline(draw, time_str,            cx3, by, fs4, GRAY,   stroke=0)
 
     return img

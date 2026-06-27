@@ -1,0 +1,56 @@
+{
+    "current_start": "2026-06-22",
+    "current_banners": [
+        {
+            "collection": "Kpop Demon Hunters",
+            "card": "Rumi",
+            "img": "kpop/Rumi.png"
+        },
+        {
+            "collection": "Pokémon G1",
+            "card": "Mew",
+            "img": "pkm1/Mew.png"
+        },
+        {
+            "collection": "The Amazing Digital Circus",
+            "card": "Pomni",
+            "img": "digitalcircus/Pomni.png"
+        }
+    ],
+    "next_banners": [
+        {
+            "collection": "Honkai: Star Rail",
+            "card": "Caelus",
+            "img": "hsr/Caelus.png"
+        },
+        {
+            "collection": "Genshin Impact",
+            "card": "Aether",
+            "img": "genshin/Aether.png"
+        },
+        {
+            "collection": "Los Muppets",
+            "card": "Kermit",
+            "img": "muppets/Kermit.png"
+        }
+    ],
+    "history": [
+        [
+            {
+                "collection": "Kpop Demon Hunters",
+                "card": "Rumi",
+                "img": "kpop/Rumi.png"
+            },
+            {
+                "collection": "Pokémon G1",
+                "card": "Mew",
+                "img": "pkm1/Mew.png"
+            },
+            {
+                "collection": "The Amazing Digital Circus",
+                "card": "Pomni",
+                "img": "digitalcircus/Pomni.png"
+            }
+        ]
+    ]
+}

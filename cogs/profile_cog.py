@@ -66,6 +66,8 @@ def _resolve_featured_cards(users: dict, cards_db: dict, uid: str, codes: List[s
                 "collection": col,
                 "rarity":     inst.get("rarity") or meta.get("rarity") or "common",
                 "img":        meta.get("img"),
+                "gen":        inst.get("gen"),
+                "frame_id":   inst.get("frame_id"),
             })
         else:
             result.append(None)
@@ -101,6 +103,7 @@ async def _build_file(
     )
 
     img = render_profile_image(
+        cards_db           = cards_db,
         avatar_bytes       = avatar_bytes,
         display_name       = member.display_name,
         birthday           = profile.get("birthday", ""),
@@ -112,6 +115,7 @@ async def _build_file(
         season_key         = season_key,
         date_str           = date_str,
         time_str           = time_str,
+        xp                 = int(users.get(uid, {}).get("xp", 0)),
         theme              = profile.get("theme", "negro"),
     )
     return pil_to_discord_file(img, "perfil.png")

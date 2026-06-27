@@ -6,7 +6,7 @@ from typing import Set, Tuple
 
 from PIL import Image, ImageDraw, ImageEnhance
 
-from config import BASE_DIR, RARITY_STYLES
+from config import BASE_DIR, RARITY_STYLES, RARITY_ORDER
 from core.cards import rarity_es_upper
 from rendering.fonts import get_bold_font, draw_centered_text_with_outline, fit_font_to_width
 from rendering.fx import apply_rarity_fx, apply_holo_fx, safe_open_image, rarity_panel_color
@@ -27,7 +27,20 @@ def build_collection_page_image(
     per_page: int = 12,
     holo_set: Set[Tuple[str, str]] = None,
 ) -> Tuple[Image.Image, int]:
-    collection_cards = list(cards_db[collection_name].items())
+    POKEMON_COLLECTIONS = {"Pokémon G1", "Pokémon G2", "Pokémon G3"}
+    DISPLAY_ORDER = ["mythic", "gacha", "legendary", "epic", "rare", "common"]
+
+    raw_cards = list(cards_db[collection_name].items())
+    if collection_name not in POKEMON_COLLECTIONS:
+        raw_cards = sorted(
+            raw_cards,
+            key=lambda item: DISPLAY_ORDER.index(
+                ((item[1] or {}).get("rarity", "common") or "common").lower()
+                if ((item[1] or {}).get("rarity", "common") or "common").lower() in DISPLAY_ORDER
+                else "common"
+            )
+        )
+    collection_cards = raw_cards
     total_cards  = len(collection_cards)
     total_pages  = max(1, ceil(total_cards / per_page))
     page         = max(0, min(page, total_pages - 1))

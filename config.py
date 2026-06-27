@@ -1,4 +1,4 @@
-import os
+﻿import os
 import string
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -23,6 +23,7 @@ SELL_VALUES = {
     "epic":     15,
     "legendary":25,
     "mythic":   50,
+    "gacha":   100,
 }
 
 # ── Casino ─────────────────────────────────────────────────
@@ -30,7 +31,7 @@ CASINO_MIN_BET = 1
 CASINO_MAX_BET = 10
 
 # ── Rarezas ────────────────────────────────────────────────
-RARITY_ORDER = ["common", "rare", "epic", "legendary", "mythic"]
+RARITY_ORDER = ["common", "rare", "epic", "legendary", "mythic", "gacha"]
 
 RARITY_STYLES = {
     "common":    (120, 120, 120, 255),
@@ -38,6 +39,7 @@ RARITY_STYLES = {
     "epic":      (138,  43, 226, 255),
     "legendary": (255, 215,   0, 255),
     "mythic":    (255,   0,   0, 255),
+    "gacha":     (255, 120, 220, 255),
 }
 
 RARITY_LABEL_ES = {
@@ -46,6 +48,7 @@ RARITY_LABEL_ES = {
     "epic":      "Épica",
     "legendary": "Legendaria",
     "mythic":    "Evento",
+    "gacha":     "Gacha",
 }
 
 VALUE_RANGES = {
@@ -55,6 +58,17 @@ VALUE_RANGES = {
     "legendary": (1, 1000),
     "mythic":    (1,  250),
 }
+
+# ── Banner gacha ────────────────────────────────────────────
+BANNER_PULL_COST     = 160
+BANNER_PULL10_COST   = 1600
+BANNER_PITY_HARD     = 90
+BANNER_PITY_MINI     = 10
+BANNER_PROB_GACHA    = 0.012   # 1.2% por tirada
+BANNER_PROB_4STAR    = 0.05    # 5% por tirada
+BANNER_GOLD_MIN      = 5
+BANNER_GOLD_MAX      = 30
+BANNER_DURATION_DAYS = 14
 
 # ── Códigos únicos ─────────────────────────────────────────
 CODE_CHARS = string.ascii_lowercase + string.digits
@@ -103,3 +117,4 @@ except ImportError:
     pass  # python-dotenv opcional; el env puede estar seteado a nivel sistema
 
 BOT_TOKEN = _require_env("DISCORD_TOKEN")
+

@@ -188,6 +188,8 @@ def build_active_pool(cards_db: dict, active_collections: list) -> Tuple[list, l
             if not data.get("img"):
                 continue
             rarity = (data.get("rarity", "common") or "common").lower()
+            if rarity == "gacha":
+                continue   # las cartas gacha solo salen en banners
             chance = float(data.get("chance", 1))
             pool.append({
                 "collection": collection,

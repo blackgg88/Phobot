@@ -144,21 +144,21 @@ class SingleDropView(discord.ui.View):
 # ── Multi-card view: 3 images sent together, 3 buttons in one row ─────────────
 
 class MultiDropView(discord.ui.View):
-    """One button per card in a single row, each button claims only its card."""
+    """3 botones numerados (1/2/3), cada uno reclama su carta independientemente."""
 
     def __init__(self, *, drop_user_id: int, cards: List[dict], drop_time: float):
-        super().__init__(timeout=120)
+        super().__init__(timeout=60)
         self.drop_user_id = drop_user_id
         self.cards        = cards
         self.drop_time    = drop_time
         self.lock         = asyncio.Lock()
         self.claimed: List[Optional[int]] = [None] * len(cards)
+        self.message: Optional[discord.Message] = None
 
-        for i, c in enumerate(cards):
-            suit  = random.choice(_SUITS)
-            label = f"{suit}  {c.get('name', f'Carta {i+1}')}"[:80]
-            btn   = discord.ui.Button(
-                label=label,
+        for i in range(len(cards)):
+            suit = random.choice(_SUITS)
+            btn  = discord.ui.Button(
+                label=f"{suit} {i + 1}",
                 style=discord.ButtonStyle.secondary,
                 custom_id=f"mdrop_{i}",
                 row=0,
@@ -168,19 +168,26 @@ class MultiDropView(discord.ui.View):
             btn.callback = _cb
             self.add_item(btn)
 
+    async def on_timeout(self) -> None:
+        for child in self.children:
+            child.disabled = True
+        if self.message:
+            try:
+                await self.message.edit(view=self)
+            except Exception:
+                pass
+
     async def _take(self, interaction: discord.Interaction, card_idx: int) -> None:
         uid = str(interaction.user.id)
 
         async with self.lock:
-            now        = time.time()
-            is_dropper = interaction.user.id == self.drop_user_id
+            now         = time.time()
+            is_dropper  = interaction.user.id == self.drop_user_id
             in_priority = (now - self.drop_time) < DROP_PRIORITY_SECONDS
 
+            # prioridad silenciosa: ignorar al no-dropeador durante la ventana
             if in_priority and not is_dropper:
-                remaining = int(DROP_PRIORITY_SECONDS - (now - self.drop_time)) + 1
-                await interaction.response.send_message(
-                    f"⏳ El que droppeó tiene prioridad por {remaining}s más.", ephemeral=True
-                )
+                await interaction.response.defer(ephemeral=True)
                 return
 
             if self.claimed[card_idx] is not None:
@@ -204,7 +211,6 @@ class MultiDropView(discord.ui.View):
 
             card = self.cards[card_idx]
             inst = create_card_instance_from_meta(card.get("collection"), card.get("name"), cards_db, users)
-            # guardar número de generación para efecto holo
             import re as _re
             dc = card.get("display_code", "")
             _m = _re.search(r'\d+', dc)
@@ -221,15 +227,15 @@ class MultiDropView(discord.ui.View):
             save_users(users)
 
             self.claimed[card_idx] = interaction.user.id
-            # disable ALL buttons after claim
+            # solo deshabilitar el botón reclamado, los demás quedan activos
             for child in self.children:
-                cid = getattr(child, "custom_id", None)
-                if cid == f"mdrop_{card_idx}":
+                if getattr(child, "custom_id", None) == f"mdrop_{card_idx}":
                     child.disabled = True
-                    child.label    = f"✅  {card.get('name', '')}"[:80]
                     child.style    = discord.ButtonStyle.success
-                else:
-                    child.disabled = True
+
+            # si todas las cartas fueron reclamadas, detener la vista
+            if all(c is not None for c in self.claimed):
+                self.stop()
 
         for label, reward in claim_completed:
             users_path2, _, _ = get_paths()

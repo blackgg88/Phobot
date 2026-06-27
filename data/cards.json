@@ -2,8 +2,8 @@
   "Artistas Femeninas": {
     "Amy Winehouse": {
       "img": "artistasf/AmyWinehouse.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Christina Aguilera": {
       "img": "artistasf/ChristinaAguilera.png",
@@ -755,13 +755,13 @@
     },
     "Izuru Kamakura": {
       "img": "danganronpa/IzuruKamakura.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Junko Enoshima": {
       "img": "danganronpa/JunkoEnoshima.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "K1-B0": {
       "img": "danganronpa/K1B0.png",
@@ -780,8 +780,8 @@
     },
     "Kyoko Kirigiri": {
       "img": "danganronpa/KyokoKirigiri.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Maki Harukawa": {
       "img": "danganronpa/MakiHarukawa.png",
@@ -1129,8 +1129,8 @@
     },
     "Gohan Adolescente": {
       "img": "dbz/GohanAdolescente.png",
-      "rarity": "epic",
-      "chance": 15
+      "rarity": "gacha",
+      "chance": 1
     },
     "Kid Buu": {
       "img": "dbz/KidBuu.png",
@@ -1139,13 +1139,13 @@
     },
     "N17": {
       "img": "dbz/N17.png",
-      "rarity": "epic",
-      "chance": 15
+      "rarity": "gacha",
+      "chance": 1
     },
     "N18": {
       "img": "dbz/N18.png",
-      "rarity": "epic",
-      "chance": 15
+      "rarity": "gacha",
+      "chance": 1
     },
     "Trunks": {
       "img": "dbz/Trunks.png",
@@ -1213,8 +1213,8 @@
     },
     "Golden Freddy": {
       "img": "fnaf/GoldenFreddy.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Puppet": {
       "img": "fnaf/Puppet.png",
@@ -1488,8 +1488,8 @@
     },
     "Caelus": {
       "img": "hsr/Caelus.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Cirene": {
       "img": "hsr/Cirene.png",
@@ -1518,8 +1518,8 @@
     },
     "Stelle": {
       "img": "hsr/Stelle.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Argenti": {
       "img": "hsr/Argenti.png",
@@ -1910,8 +1910,8 @@
     },
     "Fionna": {
       "img": "adventure_time/Fionna.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Golb": {
       "img": "adventure_time/Golb.png",
@@ -2047,8 +2047,8 @@
     },
     "Klonoa 2": {
       "img": "klonoa/Klonoa2.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Chipple": {
       "img": "klonoa/Chipple.png",
@@ -2119,8 +2119,8 @@
     },
     "Rumi": {
       "img": "kpop/Rumi.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Zoey": {
       "img": "kpop/Zoey.png",
@@ -3010,8 +3010,8 @@
   "Life Is Strange": {
     "Chloe Price": {
       "img": "lifeisstrange/ChloePrice.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Max Caulfield": {
       "img": "lifeisstrange/MaxCaulfield.png",
@@ -3129,8 +3129,8 @@
   "My Hero Academia": {
     "Bakugo": {
       "img": "myheroacademia/Bakugo.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Deku": {
       "img": "myheroacademia/Deku.png",
@@ -3235,8 +3235,8 @@
   "Persona 5": {
     "Joker": {
       "img": "persona5/Joker.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Lavenza": {
       "img": "persona5/Lavenza.png",
@@ -4159,13 +4159,13 @@
     },
     "Mewtwo": {
       "img": "pkm1/Mewtwo.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Mew": {
       "img": "pkm1/Mew.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     }
   },
   "Re:Zero": {
@@ -4191,8 +4191,8 @@
     },
     "Rem": {
       "img": "rezero/Rem.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Satella": {
       "img": "rezero/Satella.png",
@@ -4410,8 +4410,8 @@
   "Sonic": {
     "Shadow": {
       "img": "sonic/Shadow.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Sonic": {
       "img": "sonic/Sonic.png",
@@ -4614,8 +4614,8 @@
     },
     "Steven Universe": {
       "img": "stevenuniverse/StevenUniverse.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Espinela": {
       "img": "stevenuniverse/Espinela.png",
@@ -4741,8 +4741,8 @@
     },
     "Pearto": {
       "img": "teto/Pearto.png",
-      "rarity": "rare",
-      "chance": 30
+      "rarity": "gacha",
+      "chance": 1
     },
     "Robloxto": {
       "img": "teto/Robloxto.png",
@@ -4803,8 +4803,8 @@
     },
     "Pomni": {
       "img": "digitalcircus/Pomni.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Gangle": {
       "img": "digitalcircus/Gangle.png",
@@ -4860,8 +4860,8 @@
   "The Walking Dead": {
     "Daryl Dixon": {
       "img": "twd/DarylDixon.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Negan": {
       "img": "twd/Negan.png",
@@ -4922,8 +4922,8 @@
   "Total Drama": {
     "Heather": {
       "img": "totaldrama/Heather.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Lindsay": {
       "img": "totaldrama/Lindsay.png",
@@ -5039,8 +5039,8 @@
     },
     "Chara": {
       "img": "undertale/Chara.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Frisk": {
       "img": "undertale/Frisk.png",
@@ -5148,8 +5148,8 @@
     },
     "Chanel Oberlin": {
       "img": "screamqueens/ChanelOberlin.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Hester Ulrich": {
       "img": "screamqueens/HesterUlrich.png",
@@ -5220,8 +5220,8 @@
   "Animal Crossing": {
     "Canela": {
       "img": "animalcrossing/Canela.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Tom Nook": {
       "img": "animalcrossing/TomNook.png",
@@ -5384,8 +5384,8 @@
     },
     "Santana Lopez": {
       "img": "glee/SantanaLopez.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Sue Sylvester": {
       "img": "glee/SueSylvester.png",
@@ -5632,8 +5632,8 @@
     },
     "Eleven": {
       "img": "strangerthings/Eleven.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Jim Hopper": {
       "img": "strangerthings/JimHopper.png",
@@ -5781,8 +5781,8 @@
     },
     "Stella": {
       "img": "winxclub/Stella.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Aisha": {
       "img": "winxclub/Aisha.png",
@@ -5843,8 +5843,8 @@
     },
     "Kenny McCormick": {
       "img": "southpark/KennyMcCormick.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Kyle Broflovski": {
       "img": "southpark/KyleBroflovski.png",
@@ -5960,8 +5960,8 @@
     },
     "Powder": {
       "img": "arcane/Powder.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Viktor": {
       "img": "arcane/Viktor.png",
@@ -6012,8 +6012,8 @@
   "Campamento Desventura": {
     "Anastasia": {
       "img": "disventure/Anastasia.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Ara": {
       "img": "disventure/Ara.png",
@@ -6981,15 +6981,15 @@
     },
     "Celebi": {
       "img": "pkm2/Celebi.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     }
   },
   "Genshin Impact": {
     "Aether": {
       "img": "genshin/Aether.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Arlecchino": {
       "img": "genshin/Arlecchino.png",
@@ -7008,8 +7008,8 @@
     },
     "Lumine": {
       "img": "genshin/Lumine.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Mavuika": {
       "img": "genshin/Mavuika.png",
@@ -7550,8 +7550,8 @@
   "Los Muppets": {
     "Kermit": {
       "img": "muppets/Kermit.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Miss Piggy": {
       "img": "muppets/MissPiggy.png",
@@ -7684,8 +7684,8 @@
     },
     "Tablón": {
       "img": "ededdeddy/Tablon.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Lee": {
       "img": "ededdeddy/Lee.png",
@@ -9302,28 +9302,28 @@
     },
     "Jirachi": {
       "img": "pkm3/Jirachi.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Deoxys": {
       "img": "pkm3/Deoxys.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Deoxys Attack": {
       "img": "pkm3/DeoxysAttack.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Deoxys Defense": {
       "img": "pkm3/DeoxysDefense.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Deoxys Speed": {
       "img": "pkm3/DeoxysSpeed.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     }
   },
   "American Horror Story": {
@@ -9364,8 +9364,8 @@
     },
     "Fiona Goode": {
       "img": "american/FionaGoode.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "James Patrick March": {
       "img": "american/JamesPatrickMarch.png",
@@ -9384,8 +9384,8 @@
     },
     "Lana Winters": {
       "img": "american/LanaWinters.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Liz Taylor": {
       "img": "american/LizTaylor.png",
@@ -9424,8 +9424,8 @@
     },
     "Tate Langdon": {
       "img": "american/TateLangdon.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "The Countess": {
       "img": "american/TheCountess.png",
@@ -10126,8 +10126,8 @@
     },
     "Hannah Baker": {
       "img": "reasons/HannahBaker.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Jessica Davis": {
       "img": "reasons/JessicaDavis.png",
@@ -10708,13 +10708,13 @@
     },
     "Ras de la Génesis": {
       "img": "epicseven/RasdelaGenesis.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Rhianna Luciella": {
       "img": "epicseven/RhiannaLuciella.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Rinak": {
       "img": "epicseven/Rinak.png",
@@ -11250,8 +11250,8 @@
     },
     "Rosalina": {
       "img": "supermario/Rosalina.png",
-      "rarity": "legendary",
-      "chance": 3
+      "rarity": "gacha",
+      "chance": 1
     },
     "Toad": {
       "img": "supermario/Toad.png",
@@ -11457,6 +11457,38 @@
       "img": "supermario/Wendy.png",
       "rarity": "common",
       "chance": 60
+    }
+  },
+  "Gacha": {
+    "Amarillo": {
+      "img": "gacha/Amarillo.png",
+      "rarity": "gacha",
+      "chance": 1
+    },
+    "Azul": {
+      "img": "gacha/Azul.png",
+      "rarity": "gacha",
+      "chance": 1
+    },
+    "Magenta": {
+      "img": "gacha/Magenta.png",
+      "rarity": "gacha",
+      "chance": 1
+    },
+    "Ocre": {
+      "img": "gacha/Ocre.png",
+      "rarity": "gacha",
+      "chance": 1
+    },
+    "Rojo": {
+      "img": "gacha/Rojo.png",
+      "rarity": "gacha",
+      "chance": 1
+    },
+    "Verde": {
+      "img": "gacha/Verde.png",
+      "rarity": "gacha",
+      "chance": 1
     }
   }
 }

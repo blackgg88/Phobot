@@ -175,11 +175,12 @@ class GachaCog(commands.Cog):
         img  = create_drop_image(pack_data)
         f    = pil_to_discord_file(img, "drop.png")
         view = MultiDropView(drop_user_id=ctx.author.id, cards=pack_data, drop_time=now)
-        await ctx.send(
+        msg  = await ctx.send(
             content=f"**{ctx.author.display_name} está dropeando cartas**",
             file=f,
             view=view,
         )
+        view.message = msg
         await notify_wishlist(self.bot, ctx.channel, pack_data, users)
 
 

@@ -387,13 +387,27 @@ class MuseumBgShopView(discord.ui.View):
         if not meta:
             return
         already = str(bid) in [str(o) for o in self.owned]
+        museo_num = meta.get("museum", 1)
+        museo_tag = f"Museo {'I' * museo_num}" if museo_num <= 3 else f"Museo {museo_num}"
         desc = (
-            f"**{meta['name']}**\nPrecio: **{meta['price']}** oro\n💰 Oro tuyo: **{self.gold}**\n\n"
+            f"**{meta['name']}** *(para {museo_tag})*\n"
+            f"Precio: **{meta['price']}** oro\n💰 Oro tuyo: **{self.gold}**\n\n"
             + ("✅ Ya tenés este fondo." if already else "¿Querés comprarlo?")
         )
-        await edit_interaction_message(interaction,
-            embed=discord.Embed(title="🏛️ Fondo seleccionado", description=desc, color=0x2c3e50),
-            view=self)
+        e = discord.Embed(title="🏛️ Vista previa del fondo", description=desc, color=0x2c3e50)
+
+        # adjuntar imagen de preview si existe
+        import os
+        from config import BASE_DIR
+        img_path = os.path.join(BASE_DIR, "images", meta.get("img", ""))
+        attachments = []
+        if os.path.isfile(img_path):
+            ext      = os.path.splitext(img_path)[1] or ".png"
+            filename = f"bg_preview{ext}"
+            e.set_image(url=f"attachment://{filename}")
+            attachments = [discord.File(img_path, filename=filename)]
+
+        await edit_interaction_message(interaction, embed=e, attachments=attachments, view=self)
 
     @discord.ui.button(label="✅ Comprar fondo", style=discord.ButtonStyle.success)
     async def buy_bg_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
